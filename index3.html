@@ -472,7 +472,7 @@
 </footer>
 
 <script>
-  // 1. Настройки при скролване
+  // SCROLL REVEAL
   const obs = new IntersectionObserver((entries) => {
     entries.forEach((e,i) => {
       if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),i*90); obs.unobserve(e.target); }
@@ -480,12 +480,12 @@
   },{threshold:0.1});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
+  // NAV SCROLL
   const nav = document.getElementById('nav');
   window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60));
 
-  // 2. ЛОГИКА ЗА ЕЗИКА
-  let currentLang = 'bg'; // Тук задаваме езика
-
+  // LANGUAGE
+  let currentLang = 'bg';
   function setLang(lang) {
     currentLang = lang;
     document.documentElement.lang = lang === 'bg' ? 'bg' : 'en';
@@ -499,15 +499,11 @@
     document.querySelectorAll('[data-placeholder-en]').forEach(el => {
       el.placeholder = el.getAttribute('data-placeholder-' + lang) || el.placeholder;
     });
+    // CEE / ЦИЕ
     document.getElementById('cee-stat').textContent = lang === 'bg' ? 'ЦИЕ' : 'CEE';
   }
 
-  // ТОВА Е ВАЖНАТА ЧАСТ: Стартиране на Български
-  document.addEventListener('DOMContentLoaded', () => {
-    setLang('bg');
-  });
-
-  // 3. Изпращане на формата (EmailJS)
+  // CONTACT FORM — EmailJS
   function submitForm() {
     const name    = document.getElementById('f-name').value.trim();
     const email   = document.getElementById('f-email').value.trim();
@@ -552,6 +548,9 @@
       document.querySelector('.fsub .btn').disabled = false;
     });
   }
+  document.addEventListener('DOMContentLoaded', () => {
+    setLang('bg');
+});
 </script>
 </body>
 </html>
