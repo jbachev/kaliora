@@ -8,9 +8,9 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --ink:    #0B0C0E; --ink-2: #131518; --ink-3: #1C1F24;
-      --gold:   #C9A96E; --cream: #F4EEE2; --muted: #7A7D85;
-      --border: rgba(201,169,110,0.18);
+      --ink:    #2A2A2A; --ink-2: #313131; --ink-3: #383838;
+      --gold:   #C9A96E; --cream: #F0EAD8; --muted: #909090;
+      --border: rgba(201,169,110,0.22);
       --ff-d:   'Cormorant Garamond', serif;
       --ff-b:   'DM Sans', sans-serif;
     }
@@ -21,7 +21,7 @@
 
     /* NAV */
     nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:1rem 4rem; transition:background 0.4s; animation:fadeDown 0.8s ease both; }
-    nav.scrolled { background:rgba(11,12,14,0.96); backdrop-filter:blur(8px); }
+    nav.scrolled { background:rgba(42,42,42,0.97); backdrop-filter:blur(8px); }
     .nav-logo { display:flex; align-items:center; text-decoration:none; }
     .nav-logo img { height:52px; width:auto; filter:brightness(1.05); }
     .nav-right { display:flex; align-items:center; gap:2.4rem; }
@@ -37,7 +37,7 @@
     .hero { min-height:100vh; position:relative; display:flex; align-items:center; overflow:hidden; }
     .hero-bg { position:absolute; inset:0; animation:zoomIn 10s ease both; }
     .hero-bg img { width:100%; height:100%; object-fit:cover; object-position:center 30%; }
-    .hero-bg::after { content:''; position:absolute; inset:0; background:linear-gradient(105deg,rgba(11,12,14,0.92) 38%,rgba(11,12,14,0.45) 100%); }
+    .hero-bg::after { content:''; position:absolute; inset:0; background:linear-gradient(105deg,rgba(42,42,42,0.88) 38%,rgba(42,42,42,0.35) 100%); }
     .hero-content { position:relative; z-index:2; padding:9rem 4rem 5rem; max-width:680px; animation:fadeUp 1s 0.3s ease both; }
     .eyebrow { font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); margin-bottom:1.6rem; display:flex; align-items:center; gap:1rem; }
     .eyebrow::before { content:''; width:40px; height:1px; background:var(--gold); }
@@ -124,7 +124,7 @@
     .vent { position:relative; height:400px; overflow:hidden; }
     .vent img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s; filter:brightness(0.45); }
     .vent:hover img { transform:scale(1.06); filter:brightness(0.35); }
-    .vent-body { position:absolute; inset:0; padding:2.4rem; display:flex; flex-direction:column; justify-content:flex-end; background:linear-gradient(to top,rgba(11,12,14,0.88) 0%,transparent 55%); }
+    .vent-body { position:absolute; inset:0; padding:2.4rem; display:flex; flex-direction:column; justify-content:flex-end; background:linear-gradient(to top,rgba(42,42,42,0.88) 0%,transparent 55%); }
     .vent-num { font-family:var(--ff-d); font-size:0.85rem; color:var(--gold); opacity:0.7; margin-bottom:0.5rem; }
     .vent-name { font-family:var(--ff-d); font-size:2.1rem; font-weight:400; color:var(--cream); margin-bottom:0.5rem; }
     .vent-tag { font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,169,110,0.4); display:inline-block; padding:0.25rem 0.8rem; margin-bottom:1rem; }
@@ -161,7 +161,7 @@
     .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity:0; }
     .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
-    .mobile-nav { display:none; position:fixed; inset:0; background:rgba(11,12,14,0.98); z-index:199; flex-direction:column; align-items:center; justify-content:center; gap:2.4rem; }
+    .mobile-nav { display:none; position:fixed; inset:0; background:rgba(42,42,42,0.98); z-index:199; flex-direction:column; align-items:center; justify-content:center; gap:2.4rem; }
     .mobile-nav.open { display:flex; }
     .mobile-nav a { font-family:var(--ff-d); font-size:2rem; font-weight:300; letter-spacing:0.12em; color:var(--cream); text-decoration:none; transition:color 0.3s; }
     .mobile-nav a:hover { color:var(--gold); }
