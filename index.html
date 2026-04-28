@@ -3,16 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-668M14W4QG"></script>
-  <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-668M14W4QG');
-  </script>
-  
   <title>Kaliora Management & Consulting</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Italiana&display=swap" rel="stylesheet" />
   <style>
@@ -171,24 +161,102 @@
     .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity:0; }
     .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
-    .mobile-nav { display:none; position:fixed; inset:0; background:rgba(42,42,42,0.98); z-index:199; flex-direction:column; align-items:center; justify-content:center; gap:2.4rem; }
+    .mobile-nav { display:none; position:fixed; inset:0; background:rgba(42,42,42,0.97); z-index:199; flex-direction:column; align-items:center; justify-content:center; gap:2.4rem; }
     .mobile-nav.open { display:flex; }
     .mobile-nav a { font-family:var(--ff-d); font-size:2rem; font-weight:300; letter-spacing:0.12em; color:var(--cream); text-decoration:none; transition:color 0.3s; }
     .mobile-nav a:hover { color:var(--gold); }
     .mobile-nav .lang-toggle-mob { display:flex; border:1px solid var(--border); overflow:hidden; margin-top:1rem; }
     .mobile-nav .lang-toggle-mob button { background:transparent; border:none; color:var(--muted); font-family:var(--ff-b); font-size:0.8rem; letter-spacing:0.14em; text-transform:uppercase; padding:0.5rem 1.2rem; cursor:pointer; }
     .mobile-nav .lang-toggle-mob button.active { background:var(--gold); color:var(--ink); }
+
+    /* ── AUDIT SECTION ── */
+    #audit { background:var(--ink); }
+    .audit-hero { text-align:center; max-width:760px; margin:0 auto 4rem; }
+    .audit-hero .sh { max-width:100%; }
+    .audit-hero .sdiv { margin:2rem auto; }
+    .audit-tagline { font-family:var(--ff-d); font-size:1.15rem; font-style:italic;
+                     color:rgba(240,234,216,0.75); line-height:1.8; margin-bottom:2.5rem; }
+
+    /* Problems grid */
+    .audit-problems { display:grid; grid-template-columns:repeat(2,1fr); gap:1px;
+                      border:1px solid var(--border); margin-bottom:4rem; }
+    .audit-problem { padding:1.6rem 2rem; background:var(--ink-2);
+                     border-right:1px solid var(--border); }
+    .audit-problem:nth-child(2n) { border-right:none; }
+    .audit-problem:nth-child(n+3) { border-top:1px solid var(--border); }
+    .audit-problem-q { font-family:var(--ff-d); font-size:1.15rem; font-weight:400;
+                       color:var(--cream); margin-bottom:0; line-height:1.4; }
+    .audit-problem-q::before { content:'→ '; color:var(--gold); }
+
+    /* Steps */
+    .audit-steps { display:grid; grid-template-columns:repeat(4,1fr);
+                   gap:1px; border:1px solid var(--border); margin-bottom:4rem; }
+    .audit-step { padding:2rem 1.8rem; background:var(--ink-2);
+                  border-right:1px solid var(--border); position:relative; }
+    .audit-step:last-child { border-right:none; }
+    .audit-step::after { content:''; position:absolute; top:0; left:0; right:0;
+                         height:2px; background:var(--gold); transform:scaleX(0);
+                         transform-origin:left; transition:transform 0.4s; }
+    .audit-step:hover::after { transform:scaleX(1); }
+    .audit-step-n { font-family:var(--ff-d); font-size:0.8rem; color:var(--gold);
+                    opacity:0.6; margin-bottom:0.8rem; letter-spacing:0.1em; }
+    .audit-step-t { font-family:var(--ff-d); font-size:1.2rem; font-weight:400;
+                    color:var(--cream); margin-bottom:0.6rem; }
+    .audit-step-b { font-size:0.82rem; color:var(--muted); line-height:1.8; }
+
+    /* Deliverables */
+    .audit-delivers { display:grid; grid-template-columns:repeat(2,1fr);
+                      gap:1.5rem; margin-bottom:4rem; }
+    .audit-deliver { border:1px solid var(--border); padding:1.8rem 2rem;
+                     background:var(--ink-2); display:flex; gap:1.2rem; align-items:flex-start; }
+    .audit-deliver-icon { width:36px; height:36px; border:1px solid var(--border);
+                          display:flex; align-items:center; justify-content:center;
+                          flex-shrink:0; color:var(--gold); }
+    .audit-deliver-t { font-family:var(--ff-d); font-size:1.1rem; font-weight:400;
+                       color:var(--cream); margin-bottom:0.4rem; }
+    .audit-deliver-b { font-size:0.82rem; color:var(--muted); line-height:1.75; }
+
+    /* NOT for you */
+    .audit-not { border:1px solid var(--border); padding:2.4rem 3rem;
+                 background:var(--ink-2); margin-bottom:4rem; }
+    .audit-not-title { font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase;
+                       color:var(--muted); margin-bottom:1.4rem; }
+    .audit-not-list { list-style:none; }
+    .audit-not-list li { font-size:0.88rem; color:var(--muted); line-height:1.75;
+                         padding:0.5rem 0; border-bottom:1px solid var(--border);
+                         padding-left:1.4rem; position:relative; }
+    .audit-not-list li:last-child { border-bottom:none; }
+    .audit-not-list li::before { content:'×'; position:absolute; left:0;
+                                  color:rgba(201,169,110,0.4); font-size:0.9rem; }
+
+    /* CTA block */
+    .audit-cta { text-align:center; padding:3rem 2rem;
+                 background:var(--ink-3); border:1px solid var(--border); }
+    .audit-cta-title { font-family:var(--ff-d); font-size:2rem; font-weight:300;
+                       color:var(--cream); margin-bottom:0.8rem; line-height:1.2; }
+    .audit-cta-title em { font-style:italic; color:var(--gold); }
+    .audit-cta-sub { font-size:0.88rem; color:var(--muted); margin-bottom:2rem;
+                     max-width:500px; margin-left:auto; margin-right:auto; line-height:1.8; }
+
+    @media(max-width:900px) {
+      .audit-problems { grid-template-columns:1fr; }
+      .audit-problem { border-right:none; border-bottom:1px solid var(--border); }
+      .audit-steps { grid-template-columns:1fr; }
+      .audit-step { border-right:none; border-bottom:1px solid var(--border); }
+      .audit-delivers { grid-template-columns:1fr; }
+      .audit-not { padding:1.8rem; }
+    }
     /* CONTACT */
     #contact { background:var(--ink); }
     .ci { max-width:1100px; margin:0 auto; }
     .ci .sh { max-width:100%; }
     .ci .sdiv { margin:2rem 0; }
-    .ci-inner { display:grid; grid-template-columns:1fr 320px; gap:4rem; align-items:start; margin-top:0; }
-    .ci-sidebar { border:1px solid var(--border); padding:0.5rem; background:var(--ink-2); }
+    .ci-inner { display:grid; grid-template-columns:1fr 360px; gap:4rem; align-items:start; margin-top:0; }
+    .ci-sidebar { border:1px solid var(--border); padding:2.4rem; background:var(--ink-2); margin-top:110px; }
     .ci-sidebar-title { font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:1.8rem; }
-    .ci-info-item { display:flex; align-items:flex-start; gap:1rem; margin-bottom:1rem; }
-    .ci-info-icon { width:42px; height:42px; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; flex-shrink:0; color:var(--gold); }
-    .ci-info-label { font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:0.1rem; }
+    .ci-info-item { display:flex; align-items:flex-start; gap:1rem; margin-bottom:1.4rem; }
+    .ci-info-icon { width:38px; height:38px; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; flex-shrink:0; color:var(--gold); }
+    .ci-info-label { font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:0.2rem; }
     .ci-info-value { font-size:0.9rem; color:var(--cream); text-decoration:none; transition:color 0.3s; }
     .ci-info-value:hover { color:var(--gold); }
     .ci-divider { height:1px; background:var(--border); margin:1.8rem 0; }
@@ -265,7 +333,9 @@
     <ul class="nav-links">
       <li><a href="#about"    data-en="About"    data-bg="За нас">About</a></li>
       <li><a href="#services" data-en="Services" data-bg="Услуги">Services</a></li>
-      <li><a href="#team"     data-en="Team"     data-bg="Екип">Team</a></li>
+      <li><a href="#audit"    data-en="Diagnostic" data-bg="Диагностика">Diagnostic</a></li>
+    <li><a href="#audit"    data-en="Diagnostic" data-bg="Диагностика">Diagnostic</a>
+    <a href="#team"     data-en="Team"     data-bg="Екип">Team</a></li>
       <li><a href="#ventures" data-en="Ventures" data-bg="Проекти">Ventures</a></li>
       <li><a href="#approach" data-en="Approach" data-bg="Подход">Approach</a></li>
       <li><a href="#contact"  data-en="Contact"  data-bg="Контакт">Contact</a></li>
@@ -396,6 +466,122 @@
       <p data-en="Clarity drives investment. We develop rigorous financial models grounded in IRR, NPV, EBITDA, FCF, and MOIC methodologies — enabling businesses and investors to evaluate opportunities, mitigate risk, and act decisively. From feasibility to growth scenarios, we turn numbers into strategic advantage." data-bg="Яснотата привлича инвестиции. Ние разработваме прецизни финансови модели, базирани на методологиите IRR, NPV, EBITDA, FCF и MOIC — това позволява на бизнеса и инвеститорите да оценяват възможности, да минимизират риска и да действат решително. От предпроектни проучвания до сценарии за растеж, ние превръщаме числата в стратегическо предимство.">Clarity drives investment. We develop rigorous financial models grounded in IRR, NPV, EBITDA, FCF, and MOIC methodologies — enabling businesses and investors to evaluate opportunities, mitigate risk, and act decisively. From feasibility to growth scenarios, we turn numbers into strategic advantage.</p>
     </div>
   </div>
+</section>
+
+<!-- AUDIT -->
+<section id="audit">
+
+  <!-- Hero -->
+  <div class="audit-hero reveal">
+    <p class="stag" data-en="Our Flagship Service" data-bg="Нашата Основна Услуга">Our Flagship Service</p>
+    <h2 class="sh" data-en="The 360° Business <em>Diagnostic</em>" data-bg="360° Бизнес <em>Диагностика</em>">The 360° Business <em>Diagnostic</em></h2>
+    <div class="sdiv"></div>
+    <p class="audit-tagline"
+       data-en="A full diagnostic review of your finances, operations, and team — identifying the bottlenecks and delivering a concrete action plan within 14 days."
+       data-bg="Пълен диагностичен преглед на финансите, операциите и екипа ви — идентифициране на тесните места и конкретен план за действие в рамките на 14 дни.">A full diagnostic review of your finances, operations, and team — identifying the bottlenecks and delivering a concrete action plan within 14 days.</p>
+  </div>
+
+  <!-- Problems -->
+  <div class="reveal" style="margin-bottom:1.5rem;">
+    <p class="stag" data-en="Does this sound familiar?" data-bg="Звучи ли ти познато?">Does this sound familiar?</p>
+  </div>
+  <div class="audit-problems reveal">
+    <div class="audit-problem">
+      <p class="audit-problem-q" data-en="Your business is growing, but profit stays the same?" data-bg="Бизнесът расте, но печалбата остава същата?">Your business is growing, but profit stays the same?</p>
+    </div>
+    <div class="audit-problem">
+      <p class="audit-problem-q" data-en="Your team is overloaded, but efficiency keeps dropping?" data-bg="Екипът е претоварен, но ефективността пада?">Your team is overloaded, but efficiency keeps dropping?</p>
+    </div>
+    <div class="audit-problem">
+      <p class="audit-problem-q" data-en="You don't know which processes make money and which lose it?" data-bg="Не знаете кои процеси носят пари и кои ги губят?">You don't know which processes make money and which lose it?</p>
+    </div>
+    <div class="audit-problem">
+      <p class="audit-problem-q" data-en="You feel trapped in daily firefighting instead of building the business?" data-bg="Чувствате се заклещени в ежедневни пожари вместо да развивате бизнеса?">You feel trapped in daily firefighting instead of building the business?</p>
+    </div>
+  </div>
+
+  <!-- Steps -->
+  <div class="reveal" style="margin-bottom:1.5rem;">
+    <p class="stag" data-en="How it works" data-bg="Как работи">How it works</p>
+  </div>
+  <div class="audit-steps reveal">
+    <div class="audit-step">
+      <div class="audit-step-n">01</div>
+      <div class="audit-step-t" data-en="Deep Dive" data-bg="Задълбочен Анализ">Deep Dive</div>
+      <p class="audit-step-b" data-en="Interviews with key people and a thorough review of your documentation, financials, and processes — no assumptions, only facts." data-bg="Интервюта с ключови хора и задълбочен преглед на документацията, финансите и процесите — без предположения, само факти.">Interviews with key people and a thorough review of your documentation, financials, and processes — no assumptions, only facts.</p>
+    </div>
+    <div class="audit-step">
+      <div class="audit-step-n">02</div>
+      <div class="audit-step-t" data-en="Leak Analysis" data-bg="Анализ на Течовете">Leak Analysis</div>
+      <p class="audit-step-b" data-en="We identify exactly where money, time, and energy are being lost — operational inefficiencies, pricing gaps, team bottlenecks, and hidden costs." data-bg="Идентифицираме точно къде се губят пари, време и енергия — оперативни неефективности, ценови пропуски, екипни тесни места и скрити разходи.">We identify exactly where money, time, and energy are being lost — operational inefficiencies, pricing gaps, team bottlenecks, and hidden costs.</p>
+    </div>
+    <div class="audit-step">
+      <div class="audit-step-n">03</div>
+      <div class="audit-step-t" data-en="Financial Modelling" data-bg="Финансово Моделиране">Financial Modelling</div>
+      <p class="audit-step-b" data-en="We stress-test your current model and build projections showing the financial impact of each recommended change — so every decision has a clear ROI." data-bg="Стрес-тестваме текущия ви модел и изграждаме прогнози, показващи финансовия ефект от всяка препоръчана промяна — за да има ясен ROI зад всяко решение.">We stress-test your current model and build projections showing the financial impact of each recommended change — so every decision has a clear ROI.</p>
+    </div>
+    <div class="audit-step">
+      <div class="audit-step-n">04</div>
+      <div class="audit-step-t" data-en="Your Roadmap" data-bg="Вашата Пътна Карта">Your Roadmap</div>
+      <p class="audit-step-b" data-en="A personal presentation of your prioritised action plan — what to fix, in what order, by whom, and within what timeframe. Concrete. Actionable. Yours." data-bg="Лична среща за представяне на приоритизирания план за действие — какво да поправите, в какъв ред, от кого и в какъв срок. Конкретно. Изпълнимо. Ваше.">A personal presentation of your prioritised action plan — what to fix, in what order, by whom, and within what timeframe. Concrete. Actionable. Yours.</p>
+    </div>
+  </div>
+
+  <!-- Deliverables -->
+  <div class="reveal" style="margin-bottom:1.5rem;">
+    <p class="stag" data-en="What you receive" data-bg="Какво получавате">What you receive</p>
+  </div>
+  <div class="audit-delivers reveal">
+    <div class="audit-deliver">
+      <div class="audit-deliver-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"/></svg></div>
+      <div>
+        <div class="audit-deliver-t" data-en="Critical Points Report" data-bg="Доклад „Критични Точки"">Critical Points Report</div>
+        <p class="audit-deliver-b" data-en="A clear, prioritised list of the risks and constraints currently limiting your business performance." data-bg="Ясен, приоритизиран списък с рисковете и ограниченията, които в момента ограничават представянето на бизнеса ви.">A clear, prioritised list of the risks and constraints currently limiting your business performance.</p>
+      </div>
+    </div>
+    <div class="audit-deliver">
+      <div class="audit-deliver-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg></div>
+      <div>
+        <div class="audit-deliver-t" data-en="Quick Wins List" data-bg="Списък „Бързи Победи"">Quick Wins List</div>
+        <p class="audit-deliver-b" data-en="3 to 5 changes you can implement immediately — no additional investment required — that will have a visible impact on performance within weeks." data-bg="3 до 5 промени, които можете да приложите незабавно — без допълнителни инвестиции — с видим ефект върху представянето в рамките на седмици.">3 to 5 changes you can implement immediately — no additional investment required — that will have a visible impact on performance within weeks.</p>
+      </div>
+    </div>
+    <div class="audit-deliver">
+      <div class="audit-deliver-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/></svg></div>
+      <div>
+        <div class="audit-deliver-t" data-en="Financial Model &amp; ROI Projections" data-bg="Финансов Модел и ROI Прогнози">Financial Model &amp; ROI Projections</div>
+        <p class="audit-deliver-b" data-en="A forward-looking model showing the projected financial impact of recommended changes — so you know exactly what you're investing in." data-bg="Прогнозен модел, показващ финансовия ефект от препоръчаните промени — за да знаете точно в какво инвестирате.">A forward-looking model showing the projected financial impact of recommended changes — so you know exactly what you're investing in.</p>
+      </div>
+    </div>
+    <div class="audit-deliver">
+      <div class="audit-deliver-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg></div>
+      <div>
+        <div class="audit-deliver-t" data-en="6-Month Priority Roadmap" data-bg="Приоритетна Пътна Карта за 6 Месеца">6-Month Priority Roadmap</div>
+        <p class="audit-deliver-b" data-en="A structured action plan for the next six months — what needs to happen, in what sequence, and who is accountable for each step." data-bg="Структуриран план за действие за следващите шест месеца — какво трябва да се случи, в каква последователност и кой отговаря за всяка стъпка.">A structured action plan for the next six months — what needs to happen, in what sequence, and who is accountable for each step.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Not for you -->
+  <div class="audit-not reveal">
+    <p class="audit-not-title" data-en="This diagnostic is NOT for you if…" data-bg="Тази диагностика НЕ е за вас, ако…">This diagnostic is NOT for you if…</p>
+    <ul class="audit-not-list">
+      <li data-en="You're looking for quick advice with no intention of changing how your business operates." data-bg="Търсите бързи съвети без намерение да промените начина, по който работи бизнесът ви.">You're looking for quick advice with no intention of changing how your business operates.</li>
+      <li data-en="You're not ready to look objectively at the numbers in your business." data-bg="Не сте готови да погледнете обективно в числата на вашия бизнес.">You're not ready to look objectively at the numbers in your business.</li>
+      <li data-en="You want a report that sits in a drawer — not one that drives real decisions." data-bg="Искате доклад, който да остане в чекмеджето — а не такъв, който да движи реални решения.">You want a report that sits in a drawer — not one that drives real decisions.</li>
+    </ul>
+  </div>
+
+  <!-- CTA -->
+  <div class="audit-cta reveal">
+    <h3 class="audit-cta-title" data-en="Ready to see what&rsquo;s <em>actually</em> holding your business back?" data-bg="Готови ли сте да разберете какво <em>наистина</em> спира бизнеса ви?">Ready to see what&rsquo;s <em>actually</em> holding your business back?</h3>
+    <p class="audit-cta-sub" data-en="Start with a free 30-minute discovery call. We'll assess whether your business is the right fit for this diagnostic — no obligation, no sales pitch." data-bg="Започнете с безплатен 30-минутен разговор. Ще преценим дали бизнесът ви е подходящ за тази диагностика — без ангажимент, без търговски натиск.">Start with a free 30-minute discovery call. We'll assess whether your business is the right fit for this diagnostic — no obligation, no sales pitch.</p>
+    <a href="https://calendly.com/kalaydzhiev/30min" target="_blank" class="btn">
+      <span data-en="Book a free consultation" data-bg="Запазете безплатна консултация">Book a free consultation</span>
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="14" height="14"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+    </a>
+  </div>
+
 </section>
 
 <!-- IMAGE BREAK -->
@@ -593,7 +779,7 @@
 
       <!-- RIGHT: contact details sidebar -->
       <div class="ci-sidebar">
-        <p class="ci-sidebar-title" style="font-family: var(--ff-d); font-size: 1rem; font-weight: 400; text-align: center;" data-en="Contact details" data-bg="Данни за контакт">Contact details</p>
+        <p class="ci-sidebar-title" data-en="Contact details" data-bg="Данни за контакт">Contact details</p>
 
         <div class="ci-info-item">
           <div class="ci-info-icon">
@@ -625,21 +811,6 @@
           </div>
         </div>
 
-        <div class="ci-divider"></div>
-
-        <!-- Book free consultation -->
-        <div style="background:var(--ink-3);border:1px solid var(--border);border-radius:4px;padding:1.6rem;text-align:center;">
-          <p style="font-family:var(--ff-d);font-size:1.3rem;font-weight:400;color:var(--cream);margin-bottom:0.6rem;"
-            data-en="Prefer a meeting?" data-bg="Предпочитате среща?">Prefer a meeting?</p>
-          <p style="font-size:0.8rem;color:var(--muted);line-height:1.7;margin-bottom:1.4rem;"
-            data-en="Book a free 30-minute consultation directly in our calendar." data-bg="Запазете безплатна 30-минутна консултация директно в нашия календар.">Book a free 30-minute consultation directly in our calendar.</p>
-
-            <a href="https://calendly.com/kalaydzhiev/30min" target="_blank" class="btn" id="book-btn" style="width:100%;justify-content:center;font-size:0.75rem;">
-            <span data-en="Book a free consultation" data-bg="Запазете безплатна среща">Book a free consultation</span>
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="13" height="13"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-          </a>
-        </div>
-
       </div><!-- end ci-sidebar -->
 
     </div><!-- end ci-inner -->
@@ -655,6 +826,7 @@
   <div class="flinks">
     <a href="#about"    data-en="About"    data-bg="За нас">About</a>
     <a href="#services" data-en="Services" data-bg="Услуги">Services</a>
+    <a href="#audit"    data-en="Diagnostic" data-bg="Диагностика">Diagnostic</a>
     <a href="#team"     data-en="Team"     data-bg="Екип">Team</a>
     <a href="#ventures" data-en="Ventures" data-bg="Проекти">Ventures</a>
     <a href="#contact"  data-en="Contact"  data-bg="Контакт">Contact</a>
