@@ -163,9 +163,9 @@
     .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
     .mobile-nav { display:none; position:fixed; inset:0; background:rgba(42,42,42,0.97); z-index:199; flex-direction:column; align-items:center; justify-content:center; gap:2.4rem; }
     .mobile-nav.open { display:flex; }
-    .mobile-nav a { font-family:var(--ff-d); font-size:2rem; font-weight:300; letter-spacing:0.12em; color:var(--cream); text-decoration:none; transition:color 0.3s; }
+    .mobile-nav a { font-family:var(--ff-d); font-size:1.5rem; font-weight:300; letter-spacing:0.1em; color:var(--cream); text-decoration:none; transition:color 0.3s; display:block; padding:0.7rem 0; border-bottom:1px solid rgba(201,169,110,0.1); width:200px; text-align:center; }
     .mobile-nav a:hover { color:var(--gold); }
-    .mobile-nav .lang-toggle-mob { display:flex; border:1px solid var(--border); overflow:hidden; margin-top:1rem; }
+    .mobile-nav .lang-toggle-mob { display:flex; border:1px solid var(--border); overflow:hidden; margin-top:1.5rem; }
     .mobile-nav .lang-toggle-mob button { background:transparent; border:none; color:var(--muted); font-family:var(--ff-b); font-size:0.8rem; letter-spacing:0.14em; text-transform:uppercase; padding:0.5rem 1.2rem; cursor:pointer; }
     .mobile-nav .lang-toggle-mob button.active { background:var(--gold); color:var(--ink); }
 
@@ -284,7 +284,7 @@
     footer { background:var(--ink-2); border-top:1px solid var(--border); padding:2.4rem 4rem; display:flex; justify-content:space-between; align-items:center; }
     .fl img { height:38px; width:auto; filter:brightness(0.9); }
     .fc { font-size:0.76rem; color:var(--muted); }
-    .flinks { display:flex; gap:1.8rem; }
+    .flinks { display:flex; gap:1.8rem; flex-wrap:wrap; justify-content:center; }
     .flinks a { font-size:0.76rem; color:var(--muted); text-decoration:none; transition:color 0.3s; }
     .flinks a:hover { color:var(--gold); }
 
@@ -314,9 +314,14 @@
       .svc { border-right:none!important; border-bottom:1px solid var(--border); }
       .team-grid { grid-template-columns:1fr; }
       .vent-grid { grid-template-columns:1fr; }
+      .vent { height:300px; }
+      .vent-name { font-size:1.5rem; }
+      .vent-body { padding:1.4rem; }
+      .vent-tag { font-size:0.62rem; }
       #approach { grid-template-columns:1fr; padding:5rem 2rem; gap:3rem; }
       section { padding:4rem 2rem; }
-      footer { flex-direction:column; gap:1.5rem; text-align:center; padding:2.5rem 2rem; }
+      footer { flex-direction:column; gap:1.2rem; text-align:center; padding:2rem 1.5rem; }
+      .flinks { gap:1rem; }
       .frow { grid-template-columns:1fr; }
     }
   </style>
@@ -331,14 +336,13 @@
   </a>
   <div class="nav-right">
     <ul class="nav-links">
-      <li><a href="#about"    data-en="About"    data-bg="За нас">About</a></li>
-      <li><a href="#services" data-en="Services" data-bg="Услуги">Services</a></li>
+      <li><a href="#about"    data-en="About"      data-bg="За нас">About</a></li>
+      <li><a href="#services" data-en="Services"   data-bg="Услуги">Services</a></li>
       <li><a href="#audit"    data-en="Diagnostic" data-bg="Диагностика">Diagnostic</a></li>
-    <li><a href="#audit"    data-en="Our" data-bg="Нашият">Our</a>
-    <a href="#team"     data-en="Team"     data-bg="Екип">Team</a></li>
-      <li><a href="#ventures" data-en="Ventures" data-bg="Проекти">Ventures</a></li>
-      <li><a href="#approach" data-en="Approach" data-bg="Подход">Approach</a></li>
-      <li><a href="#contact"  data-en="Contact"  data-bg="Контакт">Contact</a></li>
+      <li><a href="#team"     data-en="Team"       data-bg="Екип">Team</a></li>
+      <li><a href="#ventures" data-en="Ventures"   data-bg="Проекти">Ventures</a></li>
+      <li><a href="#approach" data-en="Approach"   data-bg="Подход">Approach</a></li>
+      <li><a href="#contact"  data-en="Contact"    data-bg="Контакт">Contact</a></li>
     </ul>
     <div class="lang-toggle">
       <button class="lang-btn active" onclick="setLang('en')">EN</button>
@@ -354,6 +358,7 @@
 <div class="mobile-nav" id="mobile-nav">
   <a href="#about"    onclick="closeMobileMenu()" data-en="About"    data-bg="За нас">About</a>
   <a href="#services" onclick="closeMobileMenu()" data-en="Services" data-bg="Услуги">Services</a>
+  <a href="#audit"    onclick="closeMobileMenu()" data-en="Diagnostic" data-bg="Диагностика">Diagnostic</a>
   <a href="#team"     onclick="closeMobileMenu()" data-en="Team"     data-bg="Екип">Team</a>
   <a href="#ventures" onclick="closeMobileMenu()" data-en="Ventures" data-bg="Проекти">Ventures</a>
   <a href="#approach" onclick="closeMobileMenu()" data-en="Approach" data-bg="Подход">Approach</a>
@@ -824,12 +829,13 @@
   </div>
   <div class="fc" data-en="© 2025 Kaliora Management &amp; Consulting · Plovdiv, Bulgaria" data-bg="© 2025 Kaliora Management &amp; Consulting · Пловдив, България">© 2025 Kaliora Management &amp; Consulting · Plovdiv, Bulgaria</div>
   <div class="flinks">
-    <a href="#about"    data-en="About"    data-bg="За нас">About</a>
-    <a href="#services" data-en="Services" data-bg="Услуги">Services</a>
+    <a href="#about"    data-en="About"      data-bg="За нас">About</a>
+    <a href="#services" data-en="Services"   data-bg="Услуги">Services</a>
     <a href="#audit"    data-en="Diagnostic" data-bg="Диагностика">Diagnostic</a>
-    <a href="#team"     data-en="Team"     data-bg="Екип">Team</a>
-    <a href="#ventures" data-en="Ventures" data-bg="Проекти">Ventures</a>
-    <a href="#contact"  data-en="Contact"  data-bg="Контакт">Contact</a>
+    <a href="#team"     data-en="Team"       data-bg="Екип">Team</a>
+    <a href="#ventures" data-en="Ventures"   data-bg="Проекти">Ventures</a>
+    <a href="#approach" data-en="Approach"   data-bg="Подход">Approach</a>
+    <a href="#contact"  data-en="Contact"    data-bg="Контакт">Contact</a>
   </div>
 </footer>
 
