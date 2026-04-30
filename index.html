@@ -161,11 +161,11 @@
     .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity:0; }
     .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
-    .mobile-nav { display:none; position:fixed; inset:0; background:rgba(42,42,42,0.97); z-index:199; flex-direction:column; align-items:center; justify-content:center; gap:2.4rem; }
+    .mobile-nav { display:none; position:fixed; top:64px; left:0; right:0; bottom:0; background:#2A2A2A; z-index:199; flex-direction:column; align-items:center; justify-content:flex-start; padding-top:1.5rem; overflow-y:auto; }
     .mobile-nav.open { display:flex; }
-    .mobile-nav a { font-family:var(--ff-d); font-size:1.5rem; font-weight:300; letter-spacing:0.1em; color:var(--cream); text-decoration:none; transition:color 0.3s; display:block; padding:0.7rem 0; border-bottom:1px solid rgba(201,169,110,0.1); width:200px; text-align:center; }
+    .mobile-nav a { font-family:var(--ff-d); font-size:1.3rem; font-weight:300; letter-spacing:0.08em; color:var(--cream); text-decoration:none; transition:color 0.3s; display:block; padding:0.55rem 2rem; border-bottom:1px solid rgba(201,169,110,0.1); width:100%; text-align:center; }
     .mobile-nav a:hover { color:var(--gold); }
-    .mobile-nav .lang-toggle-mob { display:flex; border:1px solid var(--border); overflow:hidden; margin-top:1.5rem; }
+    .mobile-nav .lang-toggle-mob { display:flex; border:1px solid var(--border); overflow:hidden; margin-top:1rem; }
     .mobile-nav .lang-toggle-mob button { background:transparent; border:none; color:var(--muted); font-family:var(--ff-b); font-size:0.8rem; letter-spacing:0.14em; text-transform:uppercase; padding:0.5rem 1.2rem; cursor:pointer; }
     .mobile-nav .lang-toggle-mob button.active { background:var(--gold); color:var(--ink); }
 
@@ -363,10 +363,6 @@
   <a href="#ventures" onclick="closeMobileMenu()" data-en="Ventures" data-bg="Проекти">Ventures</a>
   <a href="#approach" onclick="closeMobileMenu()" data-en="Approach" data-bg="Подход">Approach</a>
   <a href="#contact"  onclick="closeMobileMenu()" data-en="Contact"  data-bg="Контакт">Contact</a>
-  <div class="lang-toggle-mob">
-    <button id="mob-lang-en" class="active" onclick="setLang('en');updateMobLang('en')">EN</button>
-    <button id="mob-lang-bg" onclick="setLang('bg');updateMobLang('bg')">БГ</button>
-  </div>
 </div>
 
 <!-- HERO -->
@@ -955,8 +951,10 @@
     document.body.style.overflow = '';
   }
   function updateMobLang(lang) {
-    document.getElementById('mob-lang-en').classList.toggle('active', lang === 'en');
-    document.getElementById('mob-lang-bg').classList.toggle('active', lang === 'bg');
+    const en = document.getElementById('mob-lang-en');
+    const bg = document.getElementById('mob-lang-bg');
+    if (en) en.classList.toggle('active', lang === 'en');
+    if (bg) bg.classList.toggle('active', lang === 'bg');
   }
   // KALIORA METHOD toggle
   function toggleMethod() {
