@@ -4,6 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kaliora Management & Consulting</title>
+    <!-- GDPR Consent Mode v2 -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'wait_for_update': 500
+    });
+  </script>
+  <script>
+    function loadGA() {
+      if (window.gaLoaded) return;
+      window.gaLoaded = true;
+      var s = document.createElement('script');
+      s.src = "https://www.googletagmanager.com/gtag/js?id=G-668M14W4QG";
+      s.async = true;
+      document.head.appendChild(s);
+      s.onload = function() {
+        gtag('js', new Date());
+        gtag('config', 'G-668M14W4QG', { anonymize_ip: true });
+      };
+    }
+  </script>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Italiana&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -248,28 +272,38 @@
       .audit-not { padding:1.8rem; }
     }
 
-    /* COOKIE BANNER */
-    #cookie-banner { position:fixed; bottom:0; left:0; right:0; z-index:9000;
-      background:#1f1f1f; border-top:1px solid rgba(201,169,110,0.25);
-      padding:1.2rem 3rem; display:flex; align-items:center;
-      justify-content:space-between; gap:2rem; flex-wrap:wrap;
-      transform:translateY(100%); transition:transform 0.4s ease;
-      box-shadow:0 -4px 24px rgba(0,0,0,0.4); }
-    #cookie-banner.visible { transform:translateY(0); }
-    #cookie-banner p { font-size:0.82rem; color:#909090; line-height:1.6;
-      max-width:680px; margin:0; }
-    #cookie-banner p a { color:#C9A96E; text-decoration:underline; cursor:pointer; }
-    .cookie-btns { display:flex; gap:0.8rem; flex-shrink:0; }
-    .cookie-accept { background:#C9A96E; color:#2A2A2A; border:none;
-      font-family:'DM Sans',sans-serif; font-size:0.75rem; font-weight:500;
-      letter-spacing:0.12em; text-transform:uppercase; padding:0.6rem 1.4rem;
-      cursor:pointer; transition:opacity 0.3s; }
-    .cookie-accept:hover { opacity:0.85; }
-    .cookie-decline { background:transparent; color:#909090; border:1px solid rgba(144,144,144,0.3);
-      font-family:'DM Sans',sans-serif; font-size:0.75rem; letter-spacing:0.12em;
-      text-transform:uppercase; padding:0.6rem 1.4rem; cursor:pointer; transition:border-color 0.3s; }
-    .cookie-decline:hover { border-color:#909090; }
-    @media(max-width:900px){ #cookie-banner { padding:1rem 1.5rem; flex-direction:column; align-items:flex-start; } }
+    /* COOKIE BANNER — GDPR Premium */
+    #cookie-banner {
+      position:fixed; bottom:24px; left:50%;
+      transform:translateX(-50%) translateY(130%);
+      z-index:9999; width:calc(100% - 48px); max-width:940px;
+      transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);
+    }
+    #cookie-banner.visible { transform:translateX(-50%) translateY(0); }
+    .cookie-inner {
+      background:rgba(31,31,31,0.97); backdrop-filter:blur(16px);
+      border:1px solid rgba(201,169,110,0.28);
+      padding:1.5rem 2rem; display:flex; justify-content:space-between;
+      gap:2rem; align-items:center;
+      box-shadow:0 24px 64px rgba(0,0,0,0.65);
+    }
+    .cookie-title { font-family:var(--ff-d); font-size:1.1rem; color:var(--cream); margin-bottom:0.3rem; }
+    .cookie-text p { font-size:0.8rem; color:var(--muted); max-width:560px; line-height:1.65; margin:0; }
+    .cookie-text a { color:var(--gold); cursor:pointer; text-decoration:underline; }
+    .cookie-actions { display:flex; gap:0.6rem; flex-shrink:0; }
+    .cookie-btn { font-family:var(--ff-b); font-size:0.68rem; letter-spacing:0.12em;
+      text-transform:uppercase; padding:0.55rem 1.4rem; cursor:pointer;
+      border:1px solid var(--border); transition:all 0.3s; }
+    .cookie-btn.primary { background:var(--gold); color:var(--ink); border-color:var(--gold); }
+    .cookie-btn.primary:hover { opacity:0.85; }
+    .cookie-btn.secondary { background:transparent; color:var(--muted); }
+    .cookie-btn.secondary:hover { border-color:var(--gold); color:var(--gold); }
+    @media(max-width:700px){
+      .cookie-inner { flex-direction:column; align-items:flex-start; }
+      .cookie-actions { width:100%; justify-content:space-between; }
+      #cookie-banner { bottom:0; width:100%; left:0; transform:translateY(130%); border-radius:0; }
+      #cookie-banner.visible { transform:translateY(0); }
+    }
 
     /* MODAL (Privacy / T&C) */
     .modal-overlay { display:none; position:fixed; inset:0; z-index:8000;
@@ -294,6 +328,15 @@
     .modal-body ul { margin:0.5rem 0 1rem 1.2rem; }
     .modal-body ul li { font-size:0.85rem; color:#909090; line-height:1.8; margin-bottom:0.3rem; }
     .modal-body a { color:#C9A96E; }
+
+    /* Bilingual modal content */
+    .modal-lang { display:none; }
+    :lang(en) .modal-lang-en { display:block; }
+    :lang(bg) .modal-lang-bg { display:block; }
+    html:not([lang="bg"]) .modal-lang-en { display:block; }
+    html:not([lang="bg"]) .modal-lang-bg { display:none; }
+    html[lang="bg"] .modal-lang-bg { display:block; }
+    html[lang="bg"] .modal-lang-en { display:none; }
     /* CONTACT */
     #contact { background:var(--ink); }
     .ci { max-width:1100px; margin:0 auto; }
@@ -451,7 +494,6 @@
     <div class="about-text">
       <p data-en="Kaliora Management & Consulting is a Plovdiv-based advisory and venture development firm backed by a senior team with <strong>20+ years of multi-site leadership</strong> across retail, leisure, and entertainment in Central and Eastern Europe." data-bg="Kaliora Management & Consulting е консултантска компания за бизнес развитие, базирана в Пловдив, с екип с над <strong>20 години управленчески опит на висше ниво</strong> в търговията, развлеченията и услугите в Централна и Източна Европа.">Kaliora Management & Consulting is a Plovdiv-based advisory and venture development firm backed by a senior team with <strong>20+ years of multi-site leadership</strong> across retail, leisure, and entertainment in Central and Eastern Europe.</p>
       <p data-en="Our foundation is execution at scale — leading organizations of 1000+ people, delivering new-site launches, operational transformations, and capability-building programmes across distributed networks. This hands-on experience shapes our understanding of <strong>performance, scalability, and sustainable growth</strong>." data-bg="в търговията, развлеченията и услугите в Централна и Източна Европа. Изграждаме и управляваме сложни оперативни структури — от организации с над 1000 служители до разгръщане и оптимизация на мащабни търговски мрежи и бизнес системи. Това определя нашия подход: <strong>практичен, структуриран и ориентиран към измерими резултати</strong>.">Our foundation is execution at scale — leading organizations of 1000+ people, delivering new-site launches, operational transformations, and capability-building programmes across distributed networks. This hands-on experience shapes our understanding of <strong>performance, scalability, and sustainable growth</strong>.</p>
-      <p data-en="We combine operational excellence with a 360° commercial growth approach, <strong> operations, marketing, and human capital</strong> into a unified model that aligns all customer touchpoints — from digital ecosystems and partnerships to on-site experience and brand positioning — to improve performance, strengthen brand relevance, and build high-performing teams." data-bg="Вярваме, че устойчивият растеж се случва, когато всички части на бизнеса работят в синхрон. Затова не разглеждаме <strong>маркетинга, процесите и хората</strong> като отделни звена, а като една система. Работим върху целия път на клиента, за да изградим бранд, който е не просто разпознаваем, а устойчив и значим. Помагаме ви да подобрите ефективността на бизнеса и да развиете хората, които го движат напред">We combine operational excellence with a 360° commercial growth approach, integrating <strong>operations, marketing, and human capital</strong> into a unified model that aligns all customer touchpoints — from digital ecosystems and partnerships to on-site experience and brand positioning — to improve performance, strengthen brand relevance, and build high-performing teams.</p>
     </div>
   </div>
 </section>
@@ -513,6 +555,74 @@
       <div class="svc-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
       <h3 data-en="Financial Modelling" data-bg="Финансово Моделиране">Financial Modelling</h3>
       <p data-en="Clarity drives investment. We develop rigorous financial models grounded in IRR, NPV, EBITDA, FCF, and MOIC methodologies — enabling businesses and investors to evaluate opportunities, mitigate risk, and act decisively. From feasibility to growth scenarios, we turn numbers into strategic advantage." data-bg="Яснотата привлича инвестиции. Ние разработваме прецизни финансови модели, базирани на методологиите IRR, NPV, EBITDA, FCF и MOIC — това позволява на бизнеса и инвеститорите да оценяват възможности, да минимизират риска и да действат решително. От предпроектни проучвания до сценарии за растеж, ние превръщаме числата в стратегическо предимство.">Clarity drives investment. We develop rigorous financial models grounded in IRR, NPV, EBITDA, FCF, and MOIC methodologies — enabling businesses and investors to evaluate opportunities, mitigate risk, and act decisively. From feasibility to growth scenarios, we turn numbers into strategic advantage.</p>
+    </div>
+  </div>
+</section>
+
+<!-- KALIORA METHOD -->
+<section id="approach">
+  <div class="reveal" style="max-width:860px;margin:0 auto;text-align:center;">
+    <p class="stag" data-en="Our Framework" data-bg="Нашата Методология">Our Framework</p>
+    <h2 class="sh" style="max-width:100%;" data-en="The KALIORA METHOD<sup style='font-size:0.5em;vertical-align:super;'>™</sup>" data-bg="МЕТОДЪТ KALIORA<sup style='font-size:0.5em;vertical-align:super;'>™</sup>">The KALIORA METHOD<sup style="font-size:0.5em;vertical-align:super;">™</sup></h2>
+    <div class="sdiv" style="margin:2rem auto;"></div>
+    <p style="font-family:var(--ff-d);font-size:1.25rem;font-style:italic;color:var(--gold);letter-spacing:0.06em;margin-bottom:2.5rem;"
+       data-en="From insight to execution. From strategy to measurable performance."
+       data-bg="От анализа до изпълнението. От стратегията до измеримите резултати.">From insight to execution. From strategy to measurable performance.</p>
+
+    <!-- See more toggle -->
+    <button onclick="toggleMethod()" id="method-toggle-btn" style="display:inline-flex;align-items:center;gap:0.6rem;background:transparent;border:1px solid var(--border);color:var(--gold);font-family:var(--ff-b);font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.8rem 2rem;cursor:pointer;transition:border-color 0.3s,color 0.3s;">
+      <span id="method-toggle-label"
+        data-en-collapsed="See more"
+        data-bg-collapsed="Виж повече"
+        data-en-expanded="See less"
+        data-bg-expanded="Скрий">See more</span>
+      <svg id="method-toggle-icon" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="transition:transform 0.3s;"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+    </button>
+  </div>
+
+  <!-- Expanded content -->
+  <div id="method-expanded" style="display:none;max-width:860px;margin:0 auto;overflow:hidden;">
+    <div style="padding-top:2rem;">
+      <!-- Intro paragraph -->
+      <p style="color:var(--muted);font-size:0.95rem;line-height:1.9;text-align:center;margin-bottom:2.5rem;max-width:720px;margin-left:auto;margin-right:auto;"
+         data-en="<strong>KALIORA METHOD</strong> is a structured, outcome-driven consulting framework designed to turn operational complexity into clear decisions, disciplined execution, and sustainable value creation. Built on financial rigor, operational experience, and hands-on implementation, it ensures every engagement moves beyond advisory — into measurable business impact."
+         data-bg="МЕТОДЪТ KALIORA е структурирана, ориентирана към резултати консултантска рамка, проектирана да превърне оперативната сложност в ясни решения, дисциплинирано изпълнение и устойчиво създаване на стойност. Изграден върху финансова строгост, оперативен опит и практическо внедряване, той гарантира, че всеки ангажимент надхвърля консултирането — и постига измерим бизнес ефект.">The KALIORA METHOD is a structured, outcome-driven consulting framework designed to turn operational complexity into clear decisions, disciplined execution, and sustainable value creation. Built on financial rigor, operational experience, and hands-on implementation, it ensures every engagement moves beyond advisory — into measurable business impact.</p>
+
+      <!-- 4 steps -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;border:1px solid var(--border);margin-bottom:3rem;" id="method-steps-grid">
+        <div class="method-step">
+          <div class="method-step-num">01</div>
+          <div class="method-step-title" data-en="Diagnose" data-bg="Диагностика">Diagnose</div>
+          <p class="method-step-body" data-en="We begin with a deep, structured diagnosis of the business across operations, financial performance, marketing effectiveness, and organisational capability. The focus is not information — but clarity. We identify the critical constraints, hidden inefficiencies, and highest-leverage opportunities that directly influence performance and growth." data-bg="Започваме с дълбока, структурирана диагностика на бизнеса, обхващаща операциите, финансовото представяне, маркетинговата ефективност и организационния капацитет. Фокусът ни не е просто информацията, а яснотата. Идентифицираме критичните ограничения, скритите неефективности и възможностите с най-голямо въздействие, които пряко влияят върху представянето и растежа.">We begin with a deep, structured diagnosis of the business across operations, financial performance, marketing effectiveness, and organisational capability. The focus is not information — but clarity. We identify the critical constraints, hidden inefficiencies, and highest-leverage opportunities that directly influence performance and growth.</p>
+        </div>
+        <div class="method-step" style="border-left:1px solid var(--border);">
+          <div class="method-step-num">02</div>
+          <div class="method-step-title" data-en="Model" data-bg="Моделиране">Model</div>
+          <p class="method-step-body" data-en="Every decision is translated into financial reality. We build robust, investment-grade models using IRR, NPV, EBITDA, and FCF frameworks to quantify opportunity, validate direction, and stress-test assumptions. This stage ensures strategy is not theoretical — but commercially defensible and investment-ready." data-bg="Всяко решение се превежда на езика на финансовата реалност. Ние изграждаме стабилни финансови модели от инвестиционен клас, използвайки рамките на IRR, NPV, EBITDA и FCF, за да оразмерим възможностите, да валидираме посоката и да подложим на стрес-тест направените догадки. Този етап гарантира, че стратегията не е теоретична, а търговски защитима и готова за инвестиции.">Every decision is translated into financial reality. We build robust, investment-grade models using IRR, NPV, EBITDA, and FCF frameworks to quantify opportunity, validate direction, and stress-test assumptions. This stage ensures strategy is not theoretical — but commercially defensible and investment-ready.</p>
+        </div>
+        <div class="method-step" style="border-top:1px solid var(--border);">
+          <div class="method-step-num">03</div>
+          <div class="method-step-title" data-en="Execute" data-bg="Изпълнение">Execute</div>
+          <p class="method-step-body" data-en="Strategy becomes action. We work alongside leadership teams to implement change, structure execution plans, support commercial negotiations, and drive delivery against clearly defined milestones. Where relevant, we integrate OKRs and performance tracking to maintain discipline and momentum." data-bg="Стратегията се превръща в действие. Работим рамо до рамо с ръководните екипи, за да внедрим промените, да структурираме планове за изпълнение, да подкрепим търговските преговори и да гарантираме резултати спрямо ясно дефинирани етапи. Където е приложимо, интегрираме OKR системи и проследяване на ефективността, за да поддържаме дисциплина и инерция в процеса.">Strategy becomes action. We work alongside leadership teams to implement change, structure execution plans, support commercial negotiations, and drive delivery against clearly defined milestones. Where relevant, we integrate OKRs and performance tracking to maintain discipline and momentum.</p>
+        </div>
+        <div class="method-step" style="border-top:1px solid var(--border);border-left:1px solid var(--border);">
+          <div class="method-step-num">04</div>
+          <div class="method-step-title" data-en="Scale" data-bg="Мащабиране">Scale</div>
+          <p class="method-step-body" data-en="We don&#39;t stop at implementation — we build repeatability. Through continuous performance tracking and refinement, we help organisations scale what works across teams, sites, and markets. The focus shifts from isolated success to systemised performance improvement across the business." data-bg="Ние не спираме до внедряването — ние изграждаме повторяемост. Чрез непрекъснато проследяване на резултатите и прецизиране на процесите, помагаме на организациите да мащабират успешните практики между различните екипи, обекти и пазари. Фокусът се измества от изолирания успех към системно подобряване на представянето в целия бизнес.">We don&#39;t stop at implementation — we build repeatability. Through continuous performance tracking and refinement, we help organisations scale what works across teams, sites, and markets. The focus shifts from isolated success to systemised performance improvement across the business.</p>
+        </div>
+      </div>
+
+      <!-- Principle -->
+      <div style="border:1px solid var(--border);padding:2.8rem 3rem;text-align:center;background:var(--ink-3);">
+        <p style="font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;"
+           data-en="The Principle Behind the Method" data-bg="Принципът зад Метода">The Principle Behind the Method</p>
+        <p style="font-family:var(--ff-d);font-size:1.5rem;font-style:italic;font-weight:300;color:var(--cream);line-height:1.5;margin-bottom:1.4rem;"
+           data-en="Clarity before complexity. Discipline before expansion. Execution before theory."
+           data-bg="Яснота преди сложност. Дисциплина преди експанзия. Изпълнение преди теория.">Clarity before complexity. Discipline before expansion. Execution before theory.</p>
+        <p style="font-size:0.88rem;color:var(--muted);max-width:560px;margin:0 auto;line-height:1.8;"
+           data-en="The KALIORA METHOD is designed for organisations that want more than advice — they want outcomes."
+           data-bg="МЕТОДЪТ KALIORA е създаден за организации, които искат повече от съвети — те искат резултати.">The KALIORA METHOD is designed for organisations that want more than advice — they want outcomes.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -641,6 +751,35 @@
   </div>
 </div>
 
+<!-- VENTURES -->
+<section id="ventures">
+  <div class="reveal">
+    <p class="stag" data-en="Proof of Work" data-bg="Доказан опит">Proof of Work</p>
+    <h2 class="sh" data-en="We don't just consult.<br/>We <em>deliver.</em>" data-bg="Ние не само консултираме.<br/>Ние <em>доставяме резултати.</em>">We don't just consult.<br/>We <em>deliver.</em></h2>
+    <div class="sdiv"></div>
+  </div>
+  <div class="vent-grid reveal">
+    <div class="vent">
+      <img src="img/Kaboom.jpeg" alt="Kaboom" loading="lazy" />
+      <div class="vent-body">
+        <div class="vent-num">01</div>
+        <div class="vent-name">Kaboom SoftPlay Park</div>
+        <span class="vent-tag" data-en="SoftPlay · Leisure &amp; Entertainment · Ruse" data-bg="СофтПлей · Развлечения · Русе">SoftPlay · Leisure &amp; Entertainment · Ruse</span>
+        <p class="vent-desc" data-en="An investor came with capital and an idea. We took it from there — location scouting, concept development, financial modelling, supplier negotiations, fit-out management, team hiring and training, and full operational launch. Kaboom is what Kaliora looks like when given a project end-to-end." data-bg="Инвеститор дойде с капитал и идея. Ние поехме оттам — намиране на локация, разработване на концепция, финансово моделиране, преговори с доставчици, управление на обзавеждането, наемане и обучение на екип, и пълно оперативно стартиране. Kaboom е това, което изглежда Kaliora, когато е даден проект от край до край." data-bg-old="">An investor came with capital and an idea. We took it from there — location scouting, concept development, financial modelling, supplier negotiations, fit-out management, team hiring and training, and full operational launch. Kaboom is what Kaliora looks like when given a project end-to-end.</p>
+      </div>
+    </div>
+    <div class="vent">
+      <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=900&q=80" alt="Consulting" loading="lazy" />
+      <div class="vent-body">
+        <div class="vent-num">02</div>
+        <div class="vent-name" data-en="Management Consulting" data-bg="Управленски Консултинг">Management Consulting</div>
+        <span class="vent-tag" data-en="B2B Advisory · CEE" data-bg="B2B Консултиране · ЦИЕ">B2B Advisory · CEE</span>
+        <p class="vent-desc" data-en="Ongoing consulting relationships with retail, hospitality, and leisure operators across CEE. Each engagement is different — some need an operational audit and a clear action plan; others need someone embedded for months to drive change. We adapt to what the business actually needs." data-bg="Продължаващи консултантски отношения с оператори в търговията, хотелиерството и leisure сектора в ЦИЕ. Всеки ангажимент е различен — едни се нуждаят от оперативен одит и ясен план за действие; други се нуждаят от някой, вграден за месеци, за да задвижи промяната. Адаптираме се към реалните нужди на бизнеса.">Ongoing consulting relationships with retail, hospitality, and leisure operators across CEE. Each engagement is different — some need an operational audit and a clear action plan; others need someone embedded for months to drive change. We adapt to what the business actually needs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- TEAM -->
 <section id="team">
   <div class="reveal">
@@ -671,103 +810,6 @@
         <span class="tc-role" data-en="Coaching &amp; Psychotherapy" data-bg="Коучинг и Психотерапия">Coaching &amp; Psychotherapy</span>
         <div class="tc-name" data-en="Wellbeing &amp; Development Partner" data-bg="Партньор по Благополучие и Развитие">Wellbeing &amp; Development Partner</div>
         <p class="tc-desc" data-en="Combining psychotherapeutic expertise with professional coaching, she supports leaders and teams in building resilience, enhancing wellbeing, and performing under pressure. Delivers targeted interventions through individual coaching, group workshops, and bespoke development programmes — enabling organizations to cultivate healthier, more effective, and high-performing environments." data-bg="Чрез съчетаване на психотерапевтична експертиза с професионален коучинг, тя подкрепя лидери и екипи в изграждането на устойчивост, подобряването на благосъстоянието (wellbeing) и ефективната работа под напрежение. Провежда целенасочени интервенции чрез индивидуален коучинг, групови уъркшопи и персонализирани програми за развитие, които позволяват на организациите да изграждат по-здравословна, ефективна и високопроизводителна работна среда.">Combining psychotherapeutic expertise with professional coaching, she supports leaders and teams in building resilience, enhancing wellbeing, and performing under pressure. Delivers targeted interventions through individual coaching, group workshops, and bespoke development programmes — enabling organizations to cultivate healthier, more effective, and high-performing environments.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- VENTURES -->
-<section id="ventures">
-  <div class="reveal">
-    <p class="stag" data-en="Proof of Work" data-bg="Доказан опит">Proof of Work</p>
-    <h2 class="sh" data-en="We don't just consult.<br/>We <em>deliver.</em>" data-bg="Ние не само консултираме.<br/>Ние <em>доставяме резултати.</em>">We don't just consult.<br/>We <em>deliver.</em></h2>
-    <div class="sdiv"></div>
-  </div>
-  <div class="vent-grid reveal">
-    <div class="vent">
-      <img src="img/Kaboom.jpeg" alt="Kaboom" loading="lazy" />
-      <div class="vent-body">
-        <div class="vent-num">01</div>
-        <div class="vent-name">Kaboom SoftPlay Park</div>
-        <span class="vent-tag" data-en="SoftPlay · Leisure &amp; Entertainment · Ruse" data-bg="СофтПлей · Развлечения · Русе">SoftPlay · Leisure &amp; Entertainment · Ruse</span>
-        <p class="vent-desc" data-en="An investor came with capital and an idea. We took it from there — location scouting, concept development, financial modelling, supplier negotiations, fit-out management, team hiring and training, and full operational launch. Kaboom is what Kaliora looks like when given a project end-to-end." data-bg="Инвеститор дойде с капитал и идея. Ние поехме оттам — намиране на локация, разработване на концепция, финансово моделиране, преговори с доставчици, управление на обзавеждането, наемане и обучение на екип, и пълно оперативно стартиране. Kaboom е това, което изглежда Kaliora, когато е даден проект от край до край." data-bg-old="">An investor came with capital and an idea. We took it from there — location scouting, concept development, financial modelling, supplier negotiations, fit-out management, team hiring and training, and full operational launch. Kaboom is what Kaliora looks like when given a project end-to-end.</p>
-      </div>
-    </div>
-    <div class="vent">
-      <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=900&q=80" alt="Consulting" loading="lazy" />
-      <div class="vent-body">
-        <div class="vent-num">02</div>
-        <div class="vent-name" data-en="Management Consulting" data-bg="Управленски Консултинг">Management Consulting</div>
-        <span class="vent-tag" data-en="B2B Advisory · CEE" data-bg="B2B Консултиране · ЦИЕ">B2B Advisory · CEE</span>
-        <p class="vent-desc" data-en="Ongoing consulting relationships with retail, hospitality, and leisure operators across CEE. Each engagement is different — some need an operational audit and a clear action plan; others need someone embedded for months to drive change. We adapt to what the business actually needs." data-bg="Продължаващи консултантски отношения с оператори в търговията, хотелиерството и leisure сектора в ЦИЕ. Всеки ангажимент е различен — едни се нуждаят от оперативен одит и ясен план за действие; други се нуждаят от някой, вграден за месеци, за да задвижи промяната. Адаптираме се към реалните нужди на бизнеса.">Ongoing consulting relationships with retail, hospitality, and leisure operators across CEE. Each engagement is different — some need an operational audit and a clear action plan; others need someone embedded for months to drive change. We adapt to what the business actually needs.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- KALIORA METHOD -->
-<section id="approach">
-  <div class="reveal" style="max-width:860px;margin:0 auto;text-align:center;">
-    <p class="stag" data-en="Our Framework" data-bg="Нашата Методология">Our Framework</p>
-    <h2 class="sh" style="max-width:100%;" data-en="The KALIORA METHOD<sup style='font-size:0.5em;vertical-align:super;'>™</sup>" data-bg="МЕТОДЪТ KALIORA<sup style='font-size:0.5em;vertical-align:super;'>™</sup>">The KALIORA METHOD<sup style="font-size:0.5em;vertical-align:super;">™</sup></h2>
-    <div class="sdiv" style="margin:2rem auto;"></div>
-    <p style="font-family:var(--ff-d);font-size:1.25rem;font-style:italic;color:var(--gold);letter-spacing:0.06em;margin-bottom:2.5rem;"
-       data-en="From insight to execution. From strategy to measurable performance."
-       data-bg="От анализа до изпълнението. От стратегията до измеримите резултати.">From insight to execution. From strategy to measurable performance.</p>
-
-    <!-- See more toggle -->
-    <button onclick="toggleMethod()" id="method-toggle-btn" style="display:inline-flex;align-items:center;gap:0.6rem;background:transparent;border:1px solid var(--border);color:var(--gold);font-family:var(--ff-b);font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.8rem 2rem;cursor:pointer;transition:border-color 0.3s,color 0.3s;">
-      <span id="method-toggle-label"
-        data-en-collapsed="See more"
-        data-bg-collapsed="Виж повече"
-        data-en-expanded="See less"
-        data-bg-expanded="Скрий">See more</span>
-      <svg id="method-toggle-icon" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="transition:transform 0.3s;"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-    </button>
-  </div>
-
-  <!-- Expanded content -->
-  <div id="method-expanded" style="display:none;max-width:860px;margin:0 auto;overflow:hidden;">
-    <div style="padding-top:2rem;">
-      <!-- Intro paragraph -->
-      <p style="color:var(--muted);font-size:0.95rem;line-height:1.9;text-align:center;margin-bottom:2.5rem;max-width:720px;margin-left:auto;margin-right:auto;"
-         data-en="<strong>KALIORA METHOD</strong> is a structured, outcome-driven consulting framework designed to turn operational complexity into clear decisions, disciplined execution, and sustainable value creation. Built on financial rigor, operational experience, and hands-on implementation, it ensures every engagement moves beyond advisory — into measurable business impact."
-         data-bg="МЕТОДЪТ KALIORA е структурирана, ориентирана към резултати консултантска рамка, проектирана да превърне оперативната сложност в ясни решения, дисциплинирано изпълнение и устойчиво създаване на стойност. Изграден върху финансова строгост, оперативен опит и практическо внедряване, той гарантира, че всеки ангажимент надхвърля консултирането — и постига измерим бизнес ефект.">The KALIORA METHOD is a structured, outcome-driven consulting framework designed to turn operational complexity into clear decisions, disciplined execution, and sustainable value creation. Built on financial rigor, operational experience, and hands-on implementation, it ensures every engagement moves beyond advisory — into measurable business impact.</p>
-
-      <!-- 4 steps -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;border:1px solid var(--border);margin-bottom:3rem;" id="method-steps-grid">
-        <div class="method-step">
-          <div class="method-step-num">01</div>
-          <div class="method-step-title" data-en="Diagnose" data-bg="Диагностика">Diagnose</div>
-          <p class="method-step-body" data-en="We begin with a deep, structured diagnosis of the business across operations, financial performance, marketing effectiveness, and organisational capability. The focus is not information — but clarity. We identify the critical constraints, hidden inefficiencies, and highest-leverage opportunities that directly influence performance and growth." data-bg="Започваме с дълбока, структурирана диагностика на бизнеса, обхващаща операциите, финансовото представяне, маркетинговата ефективност и организационния капацитет. Фокусът ни не е просто информацията, а яснотата. Идентифицираме критичните ограничения, скритите неефективности и възможностите с най-голямо въздействие, които пряко влияят върху представянето и растежа.">We begin with a deep, structured diagnosis of the business across operations, financial performance, marketing effectiveness, and organisational capability. The focus is not information — but clarity. We identify the critical constraints, hidden inefficiencies, and highest-leverage opportunities that directly influence performance and growth.</p>
-        </div>
-        <div class="method-step" style="border-left:1px solid var(--border);">
-          <div class="method-step-num">02</div>
-          <div class="method-step-title" data-en="Model" data-bg="Моделиране">Model</div>
-          <p class="method-step-body" data-en="Every decision is translated into financial reality. We build robust, investment-grade models using IRR, NPV, EBITDA, and FCF frameworks to quantify opportunity, validate direction, and stress-test assumptions. This stage ensures strategy is not theoretical — but commercially defensible and investment-ready." data-bg="Всяко решение се превежда на езика на финансовата реалност. Ние изграждаме стабилни финансови модели от инвестиционен клас, използвайки рамките на IRR, NPV, EBITDA и FCF, за да оразмерим възможностите, да валидираме посоката и да подложим на стрес-тест направените догадки. Този етап гарантира, че стратегията не е теоретична, а търговски защитима и готова за инвестиции.">Every decision is translated into financial reality. We build robust, investment-grade models using IRR, NPV, EBITDA, and FCF frameworks to quantify opportunity, validate direction, and stress-test assumptions. This stage ensures strategy is not theoretical — but commercially defensible and investment-ready.</p>
-        </div>
-        <div class="method-step" style="border-top:1px solid var(--border);">
-          <div class="method-step-num">03</div>
-          <div class="method-step-title" data-en="Execute" data-bg="Изпълнение">Execute</div>
-          <p class="method-step-body" data-en="Strategy becomes action. We work alongside leadership teams to implement change, structure execution plans, support commercial negotiations, and drive delivery against clearly defined milestones. Where relevant, we integrate OKRs and performance tracking to maintain discipline and momentum." data-bg="Стратегията се превръща в действие. Работим рамо до рамо с ръководните екипи, за да внедрим промените, да структурираме планове за изпълнение, да подкрепим търговските преговори и да гарантираме резултати спрямо ясно дефинирани етапи. Където е приложимо, интегрираме OKR системи и проследяване на ефективността, за да поддържаме дисциплина и инерция в процеса.">Strategy becomes action. We work alongside leadership teams to implement change, structure execution plans, support commercial negotiations, and drive delivery against clearly defined milestones. Where relevant, we integrate OKRs and performance tracking to maintain discipline and momentum.</p>
-        </div>
-        <div class="method-step" style="border-top:1px solid var(--border);border-left:1px solid var(--border);">
-          <div class="method-step-num">04</div>
-          <div class="method-step-title" data-en="Scale" data-bg="Мащабиране">Scale</div>
-          <p class="method-step-body" data-en="We don&#39;t stop at implementation — we build repeatability. Through continuous performance tracking and refinement, we help organisations scale what works across teams, sites, and markets. The focus shifts from isolated success to systemised performance improvement across the business." data-bg="Ние не спираме до внедряването — ние изграждаме повторяемост. Чрез непрекъснато проследяване на резултатите и прецизиране на процесите, помагаме на организациите да мащабират успешните практики между различните екипи, обекти и пазари. Фокусът се измества от изолирания успех към системно подобряване на представянето в целия бизнес.">We don&#39;t stop at implementation — we build repeatability. Through continuous performance tracking and refinement, we help organisations scale what works across teams, sites, and markets. The focus shifts from isolated success to systemised performance improvement across the business.</p>
-        </div>
-      </div>
-
-      <!-- Principle -->
-      <div style="border:1px solid var(--border);padding:2.8rem 3rem;text-align:center;background:var(--ink-3);">
-        <p style="font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;"
-           data-en="The Principle Behind the Method" data-bg="Принципът зад Метода">The Principle Behind the Method</p>
-        <p style="font-family:var(--ff-d);font-size:1.5rem;font-style:italic;font-weight:300;color:var(--cream);line-height:1.5;margin-bottom:1.4rem;"
-           data-en="Clarity before complexity. Discipline before expansion. Execution before theory."
-           data-bg="Яснота преди сложност. Дисциплина преди експанзия. Изпълнение преди теория.">Clarity before complexity. Discipline before expansion. Execution before theory.</p>
-        <p style="font-size:0.88rem;color:var(--muted);max-width:560px;margin:0 auto;line-height:1.8;"
-           data-en="The KALIORA METHOD is designed for organisations that want more than advice — they want outcomes."
-           data-bg="МЕТОДЪТ KALIORA е създаден за организации, които искат повече от съвети — те искат резултати.">The KALIORA METHOD is designed for organisations that want more than advice — they want outcomes.</p>
       </div>
     </div>
   </div>
@@ -1007,20 +1049,51 @@
     if (bg) bg.classList.toggle('active', lang === 'bg');
   }
 
-  // ── COOKIE BANNER ──
-  function acceptCookies() {
-    localStorage.setItem('kaliora_cookies', 'accepted');
-    document.getElementById('cookie-banner').classList.remove('visible');
-  }
-  function declineCookies() {
-    localStorage.setItem('kaliora_cookies', 'declined');
-    document.getElementById('cookie-banner').classList.remove('visible');
-  }
-  (function initCookieBanner() {
-    if (!localStorage.getItem('kaliora_cookies')) {
-      setTimeout(() => document.getElementById('cookie-banner').classList.add('visible'), 1200);
+  // ── GDPR COOKIE CONSENT ──
+  function initCookieBanner() {
+    const _banner    = document.getElementById('cookie-banner');
+    const _acceptBtn = document.getElementById('accept-cookies');
+    const _rejectBtn = document.getElementById('reject-cookies');
+
+    if (!_banner) return;
+
+    // Clear legacy consent key to ensure clean state
+    const _consent = localStorage.getItem('cookie_consent');
+
+    // Remove legacy key if present
+    if (localStorage.getItem('kaliora_cookies')) {
+      localStorage.removeItem('kaliora_cookies');
     }
-  })();
+    if (!_consent) {
+      setTimeout(() => _banner.classList.add('visible'), 900);
+    } else if (_consent === 'accepted') {
+      enableAnalytics();
+    }
+
+    if (_acceptBtn) _acceptBtn.addEventListener('click', () => {
+      localStorage.setItem('cookie_consent', 'accepted');
+      _banner.classList.remove('visible');
+      enableAnalytics();
+    });
+
+    if (_rejectBtn) _rejectBtn.addEventListener('click', () => {
+      // Do NOT save to localStorage — banner will appear again on next visit
+      _banner.classList.remove('visible');
+      gtag('consent', 'update', { 'analytics_storage': 'denied', 'ad_storage': 'denied' });
+    });
+  }
+
+  function enableAnalytics() {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+    loadGA();
+  }
+
+  // Run after DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCookieBanner);
+  } else {
+    initCookieBanner();
+  }
 
   // ── MODALS ──
   function openModal(type) {
@@ -1090,68 +1163,250 @@ document.querySelectorAll('.tc-desc').forEach(p => {
 
 <!-- COOKIE BANNER -->
 <div id="cookie-banner">
-  <p id="cookie-text"
-     data-en="We use cookies to improve your experience on our site. By continuing to browse, you agree to our use of cookies. Read our <a onclick="openModal('privacy')">Privacy Policy</a> and <a onclick="openModal('terms')">Terms & Conditions</a>."
-     data-bg="Използваме бисквитки, за да подобрим вашето изживяване. Продължавайки да разглеждате сайта, вие се съгласявате с употребата им. Прочетете нашата <a onclick="openModal('privacy')">Политика за поверителност</a> и <a onclick="openModal('terms')">Общи условия</a>.">
-    We use cookies to improve your experience on our site. By continuing to browse, you agree to our use of cookies. Read our <a onclick="openModal('privacy')">Privacy Policy</a> and <a onclick="openModal('terms')">Terms &amp; Conditions</a>.
-  </p>
-  <div class="cookie-btns">
-    <button class="cookie-decline" id="cookie-decline-btn"
-      data-en="Decline" data-bg="Откажи" onclick="declineCookies()">Decline</button>
-    <button class="cookie-accept" id="cookie-accept-btn"
-      data-en="Accept" data-bg="Приеми" onclick="acceptCookies()">Accept</button>
+  <div class="cookie-inner">
+    <div class="cookie-text">
+      <div class="cookie-title" id="cookie-title">Privacy &amp; Cookies</div>
+      <p id="cookie-text-p">
+        We use cookies to ensure proper functionality and to analyse traffic. Analytics cookies are only activated with your consent.
+        <a onclick="openModal('privacy')">Privacy Policy</a> · <a onclick="openModal('terms')">Terms &amp; Conditions</a>
+      </p>
+    </div>
+    <div class="cookie-actions">
+      <button id="accept-cookies" class="cookie-btn primary">Accept</button>
+      <button id="reject-cookies" class="cookie-btn secondary">Decline</button>
+    </div>
   </div>
 </div>
 
-<!-- PRIVACY POLICY MODAL -->
+<!-- PRIVACY<!-- PRIVACY POLICY MODAL -->
 <div class="modal-overlay" id="modal-privacy">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('privacy')">&#x2715;</button>
-    <p class="modal-tag" data-en="Legal" data-bg="Правна информация">Legal</p>
-    <h2 class="modal-title" data-en="Privacy Policy" data-bg="Политика за поверителност">Privacy Policy</h2>
-    <p class="modal-date" data-en="Last updated: May 2025" data-bg="Последна актуализация: Май 2025">Last updated: May 2025</p>
-    <div class="modal-body">
-      <h3 data-en="1. Who we are" data-bg="1. Кои сме ние">1. Who we are</h3>
-      <p data-en="Kaliora Management &amp; Consulting is a consulting firm based in Plovdiv, Bulgaria. This privacy policy explains how we collect, use, and protect your personal data when you visit our website at kalioraltd.com." data-bg="Kaliora Management &amp; Consulting е консултантска фирма, базирана в Пловдив, България. Тази политика обяснява как събираме, използваме и защитаваме личните ви данни при посещение на kalioraltd.com.">Kaliora Management &amp; Consulting is a consulting firm based in Plovdiv, Bulgaria. This privacy policy explains how we collect, use, and protect your personal data when you visit our website at kalioraltd.com.</p>
-      <h3 data-en="2. What data we collect" data-bg="2. Какви данни събираме">2. What data we collect</h3>
-      <p data-en="We collect data you voluntarily provide through our contact form: your name, email address, phone number (optional), and the content of your message. We also use cookies to improve site functionality and understand how visitors use the site." data-bg="Събираме данни, които доброволно предоставяте чрез контактната ни форма: вашето ime, имейл адрес, телефонен номер (по желание) и съдържанието на съобщението. Използваме и бисквитки за подобряване на функционалността на сайта.">We collect data you voluntarily provide through our contact form: your name, email address, phone number (optional), and the content of your message. We also use cookies to improve site functionality and understand how visitors use the site.</p>
-      <h3 data-en="3. How we use your data" data-bg="3. Как използваме вашите данни">3. How we use your data</h3>
-      <ul>
-        <li data-en="To respond to your enquiries and service requests" data-bg="За да отговорим на вашите запитвания и заявки за услуги">To respond to your enquiries and service requests</li>
-        <li data-en="To schedule consultations via Calendly" data-bg="За да планираме консултации чрез Calendly">To schedule consultations via Calendly</li>
-        <li data-en="To send relevant information about our services (only with your consent)" data-bg="За изпращане на информация за нашите услуги (само с вашето съгласие)">To send relevant information about our services (only with your consent)</li>
-      </ul>
-      <h3 data-en="4. Cookies" data-bg="4. Бисквитки">4. Cookies</h3>
-      <p data-en="We use essential cookies required for the site to function. We do not use tracking or advertising cookies. You can manage cookie preferences through your browser settings." data-bg="Използваме основни бисквитки, необходими за функционирането на сайта. Не използваме бисквитки за проследяване или реклама. Можете да управлявате предпочитанията си чрез настройките на браузъра.">We use essential cookies required for the site to function. We do not use tracking or advertising cookies. You can manage cookie preferences through your browser settings.</p>
-      <h3 data-en="5. Your rights (GDPR)" data-bg="5. Вашите права (GDPR)">5. Your rights (GDPR)</h3>
-      <p data-en="Under GDPR, you have the right to access, correct, or delete your personal data. To exercise these rights, contact us at: georgi@kalioraltd.com" data-bg="Съгласно GDPR имате право на достъп, коригиране или изтриване на личните си данни. За да упражните тези права, свържете се с нас на: georgi@kalioraltd.com">Under GDPR, you have the right to access, correct, or delete your personal data. To exercise these rights, contact us at: georgi@kalioraltd.com</p>
-      <h3 data-en="6. Contact" data-bg="6. Контакт">6. Contact</h3>
-      <p>Kaliora Management &amp; Consulting<br/>Plovdiv, Bulgaria<br/><a href="mailto:georgi@kalioraltd.com">georgi@kalioraltd.com</a></p>
+
+    <!-- ENGLISH -->
+    <div class="modal-lang modal-lang-en">
+      <p class="modal-tag">Legal Document</p>
+      <h2 class="modal-title">Privacy Policy</h2>
+      <p class="modal-date">Version 1.0 &mdash; Effective date: May 2025</p>
+      <div class="modal-body">
+        <h3>1. Identity and Contact Details of the Data Controller</h3>
+        <p><strong>Company:</strong> КАЛИОРА МЕНИДЖМЪНТ &amp; КОНСУЛТИНГ ЕООД<br/>
+        <strong>Registration number (ЕИК):</strong> 208759364<br/>
+        <strong>Registered address:</strong> гр. Пловдив, ул. Анри Барбюс 8<br/>
+        <strong>Manager:</strong> Georgi Kalaydzhiev<br/>
+        <strong>Email:</strong> <a href="mailto:georgi@kalioraltd.com">georgi@kalioraltd.com</a></p>
+        <p>The Company is registered in the Commercial Register of the Republic of Bulgaria, maintained by the Registry Agency.</p>
+        <h3>2. Scope and Legal Framework</h3>
+        <p>This Privacy Policy describes how we collect, use, store and protect personal data in compliance with:</p>
+        <ul><li>Regulation (EU) 2016/679 (GDPR)</li><li>Directive 2002/58/EC (ePrivacy Directive)</li><li>The Personal Data Protection Act of the Republic of Bulgaria (ЗЗЛД)</li></ul>
+        <h3>3. Categories of Personal Data Collected</h3>
+        <ul>
+          <li><strong>Identification data:</strong> name, email address, telephone number (if provided)</li>
+          <li><strong>Communication data:</strong> content of messages submitted via the contact form</li>
+          <li><strong>Technical data:</strong> IP address, browser type, operating system, device identifiers</li>
+          <li><strong>Behavioural data:</strong> pages visited, time spent &mdash; only with prior explicit consent</li>
+          <li><strong>Scheduling data:</strong> name, email, and appointment details via Calendly</li>
+        </ul>
+        <p>We do not process special categories of personal data (Art. 9 GDPR).</p>
+        <h3>4. Purposes and Legal Bases for Processing</h3>
+        <ul>
+          <li><strong>Responding to enquiries</strong> &mdash; Art. 6(1)(b) GDPR (pre-contractual measures)</li>
+          <li><strong>Scheduling consultations</strong> &mdash; Art. 6(1)(b) GDPR</li>
+          <li><strong>Website analytics</strong> &mdash; Art. 6(1)(a) GDPR (consent) &mdash; only after explicit consent</li>
+          <li><strong>Website security</strong> &mdash; Art. 6(1)(f) GDPR (legitimate interest)</li>
+          <li><strong>Legal obligations</strong> &mdash; Art. 6(1)(c) GDPR</li>
+        </ul>
+        <h3>5. Third-Party Data Processors</h3>
+        <ul>
+          <li><strong>Google Analytics</strong> (Google Ireland Ltd, Dublin, Ireland) &mdash; analytics; activated only upon consent. <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a></li>
+          <li><strong>Calendly</strong> (Calendly LLC, Atlanta, USA) &mdash; appointment scheduling. <a href="https://calendly.com/privacy" target="_blank">Privacy Policy</a></li>
+          <li><strong>EmailJS</strong> (Mazel Ltd, UK) &mdash; contact form delivery. <a href="https://www.emailjs.com/legal/privacy-policy/" target="_blank">Privacy Policy</a></li>
+          <li><strong>Cloudflare</strong> (Cloudflare Inc., San Francisco, USA) &mdash; CDN and security. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank">Privacy Policy</a></li>
+          <li><strong>Zoho Mail</strong> (Zoho Corporation, India) &mdash; business email. <a href="https://www.zoho.com/privacy.html" target="_blank">Privacy Policy</a></li>
+        </ul>
+        <h3>6. International Data Transfers</h3>
+        <p>Where data is transferred outside the EEA, appropriate safeguards apply including Standard Contractual Clauses (SCCs) approved by the European Commission under Art. 46(2)(c) GDPR.</p>
+        <h3>7. Data Retention</h3>
+        <ul>
+          <li>Contact form submissions: up to 24 months</li>
+          <li>Analytics data: 14 months (Google Analytics default)</li>
+          <li>Security logs: up to 30 days</li>
+          <li>Email correspondence: up to 5 years (Bulgarian commercial law)</li>
+        </ul>
+        <h3>8. Your Rights under GDPR</h3>
+        <ul>
+          <li><strong>Access (Art. 15):</strong> receive a copy of your data</li>
+          <li><strong>Rectification (Art. 16):</strong> correct inaccurate data</li>
+          <li><strong>Erasure (Art. 17):</strong> request deletion</li>
+          <li><strong>Restriction (Art. 18):</strong> limit processing</li>
+          <li><strong>Portability (Art. 20):</strong> receive data in machine-readable format</li>
+          <li><strong>Objection (Art. 21):</strong> object to processing based on legitimate interest</li>
+          <li><strong>Withdraw consent (Art. 7(3)):</strong> at any time, without affecting prior processing</li>
+        </ul>
+        <p>Contact us at <a href="mailto:georgi@kalioraltd.com">georgi@kalioraltd.com</a>. We respond within 30 days (Art. 12 GDPR).</p>
+        <h3>9. Right to Lodge a Complaint</h3>
+        <p><strong>Commission for Personal Data Protection (КЗЛД)</strong><br/>
+        бул. &ldquo;Проф. Цветан Лазаров&rdquo; 2, 1592 Sofia &mdash; <a href="https://www.cpdp.bg" target="_blank">www.cpdp.bg</a> &mdash; kzld@cpdp.bg</p>
+        <h3>10. Security</h3>
+        <p>We implement appropriate technical and organisational measures per Art. 32 GDPR, including TLS/SSL encryption, Cloudflare WAF, and access control policies.</p>
+        <h3>11. Changes to This Policy</h3>
+        <p>This Policy may be updated at any time. The current version with its effective date is always available on this Website.</p>
+        <h3>12. Contact</h3>
+        <p>КАЛИОРА МЕНИДЖМЪНТ &amp; КОНСУЛТИНГ ЕООД &mdash; гр. Пловдив, ул. Анри Барбюс 8 &mdash; ЕИК: 208759364<br/>
+        <a href="mailto:georgi@kalioraltd.com">georgi@kalioraltd.com</a></p>
+      </div>
     </div>
+
+    <!-- BULGARIAN -->
+    <div class="modal-lang modal-lang-bg">
+      <p class="modal-tag">Правен документ</p>
+      <h2 class="modal-title">Политика за поверителност</h2>
+      <p class="modal-date">Версия 1.0 &mdash; В сила от: Май 2025</p>
+      <div class="modal-body">
+        <h3>1. Идентификация и данни за контакт на администратора</h3>
+        <p><strong>Дружество:</strong> КАЛИОРА МЕНИДЖМЪНТ &amp; КОНСУЛТИНГ ЕООД<br/>
+        <strong>ЕИК:</strong> 208759364<br/>
+        <strong>Седалище и адрес:</strong> гр. Пловдив, ул. Анри Барбюс 8<br/>
+        <strong>МОЛ:</strong> Георги Калайджиев<br/>
+        <strong>Имейл:</strong> <a href="mailto:georgi@kalioraltd.com">georgi@kalioraltd.com</a></p>
+        <p>Дружеството е вписано в Търговския регистър на Република България, воден от Агенция по вписванията.</p>
+        <h3>2. Обхват и правна рамка</h3>
+        <p>Настоящата политика описва как събираме, използваме, съхраняваме и защитаваме лични данни в съответствие с:</p>
+        <ul><li>Регламент (ЕС) 2016/679 (GDPR)</li><li>Директива 2002/58/ЕО (ePrivacy)</li><li>Закон за защита на личните данни на Република България (ЗЗЛД)</li></ul>
+        <h3>3. Категории събирани лични данни</h3>
+        <ul>
+          <li><strong>Идентификационни данни:</strong> имена, имейл адрес, телефонен номер (ако е предоставен)</li>
+          <li><strong>Комуникационни данни:</strong> съдържание на съобщения чрез контактната форма</li>
+          <li><strong>Технически данни:</strong> IP адрес, тип браузър, операционна система, идентификатори на устройство</li>
+          <li><strong>Поведенчески данни:</strong> посетени страници, прекарано време &mdash; само с предварително изрично съгласие</li>
+          <li><strong>Данни за насрочване:</strong> имена, имейл и детайли за среща чрез Calendly</li>
+        </ul>
+        <p>Не обработваме специални категории лични данни по смисъла на чл. 9 GDPR.</p>
+        <h3>4. Цели и правни основания за обработване</h3>
+        <ul>
+          <li><strong>Отговор на запитвания</strong> &mdash; чл. 6, ал. 1, б. &bdquo;б&ldquo; GDPR (преддоговорни отношения)</li>
+          <li><strong>Насрочване на консултации</strong> &mdash; чл. 6, ал. 1, б. &bdquo;б&ldquo; GDPR</li>
+          <li><strong>Уебсайт аналитика</strong> &mdash; чл. 6, ал. 1, б. &bdquo;а&ldquo; GDPR (съгласие) &mdash; само след изрично съгласие</li>
+          <li><strong>Сигурност на сайта</strong> &mdash; чл. 6, ал. 1, б. &bdquo;е&ldquo; GDPR (легитимен интерес)</li>
+          <li><strong>Законови задължения</strong> &mdash; чл. 6, ал. 1, б. &bdquo;в&ldquo; GDPR</li>
+        </ul>
+        <h3>5. Обработващи лични данни (трети страни)</h3>
+        <ul>
+          <li><strong>Google Analytics</strong> (Google Ireland Ltd, Дъблин) &mdash; аналитика; активира се само след съгласие. <a href="https://policies.google.com/privacy" target="_blank">Политика за поверителност</a></li>
+          <li><strong>Calendly</strong> (Calendly LLC, Атланта, САЩ) &mdash; насрочване на срещи. <a href="https://calendly.com/privacy" target="_blank">Политика за поверителност</a></li>
+          <li><strong>EmailJS</strong> (Mazel Ltd, Великобритания) &mdash; изпращане на контактни форми. <a href="https://www.emailjs.com/legal/privacy-policy/" target="_blank">Политика за поверителност</a></li>
+          <li><strong>Cloudflare</strong> (Cloudflare Inc., Сан Франциско, САЩ) &mdash; CDN и сигурност. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank">Политика за поверителност</a></li>
+          <li><strong>Zoho Mail</strong> (Zoho Corporation, Индия) &mdash; корпоративна поща. <a href="https://www.zoho.com/privacy.html" target="_blank">Политика за поверителност</a></li>
+        </ul>
+        <h3>6. Международни трансфери на данни</h3>
+        <p>При трансфер на данни извън ЕИП се прилагат подходящи гаранции, включително Стандартни договорни клаузи (SCC), одобрени от Европейската комисия по чл. 46, ал. 2, б. &bdquo;в&ldquo; GDPR.</p>
+        <h3>7. Срокове за съхранение</h3>
+        <ul>
+          <li>Контактни форми: до 24 месеца</li>
+          <li>Аналитични данни: 14 месеца (по подразбиране в Google Analytics)</li>
+          <li>Логове за сигурност: до 30 дни</li>
+          <li>Имейл кореспонденция: до 5 години (по Търговския закон на РБ)</li>
+        </ul>
+        <h3>8. Вашите права по GDPR</h3>
+        <ul>
+          <li><strong>Достъп (чл. 15):</strong> да получите копие от данните си</li>
+          <li><strong>Коригиране (чл. 16):</strong> да поправите неточни данни</li>
+          <li><strong>Изтриване (чл. 17):</strong> &bdquo;право да бъдете забравени&ldquo;</li>
+          <li><strong>Ограничаване (чл. 18):</strong> да ограничите обработването</li>
+          <li><strong>Преносимост (чл. 20):</strong> да получите данните в машинночетим формат</li>
+          <li><strong>Възражение (чл. 21):</strong> срещу обработване на основание легитимен интерес</li>
+          <li><strong>Оттегляне на съгласие (чл. 7, ал. 3):</strong> по всяко време, без да засяга предходното обработване</li>
+        </ul>
+        <p>Свържете се с нас на <a href="mailto:georgi@kalioraltd.com">georgi@kalioraltd.com</a>. Отговаряме в рамките на 30 дни (чл. 12 GDPR).</p>
+        <h3>9. Право на жалба</h3>
+        <p><strong>Комисия за защита на личните данни (КЗЛД)</strong><br/>
+        бул. &bdquo;Проф. Цветан Лазаров&ldquo; 2, 1592 София &mdash; <a href="https://www.cpdp.bg" target="_blank">www.cpdp.bg</a> &mdash; kzld@cpdp.bg</p>
+        <h3>10. Сигурност</h3>
+        <p>Прилагаме подходящи технически и организационни мерки по чл. 32 GDPR, включително TLS/SSL криптиране, Cloudflare WAF и политики за контрол на достъпа.</p>
+        <h3>11. Промени в политиката</h3>
+        <p>Политиката може да бъде актуализирана по всяко време. Актуалната версия с датата й е винаги налична на сайта.</p>
+        <h3>12. Контакт</h3>
+        <p>КАЛИОРА МЕНИДЖМЪНТ &amp; КОНСУЛТИНГ ЕООД &mdash; гр. Пловдив, ул. Анри Барбюс 8 &mdash; ЕИК: 208759364<br/>
+        <a href="mailto:georgi@kalioraltd.com">georgi@kalioraltd.com</a></p>
+      </div>
+    </div>
+
   </div>
 </div>
 
-<!-- TERMS & CONDITIONS MODAL -->
+<!-- TERMS<!-- TERMS<!-- TERMS<!-- TERMS & CONDITIONS MODAL -->
 <div class="modal-overlay" id="modal-terms">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('terms')">&#x2715;</button>
-    <p class="modal-tag" data-en="Legal" data-bg="Правна информация">Legal</p>
-    <h2 class="modal-title" data-en="Terms &amp; Conditions" data-bg="Общи условия">Terms &amp; Conditions</h2>
-    <p class="modal-date" data-en="Last updated: May 2025" data-bg="Последна актуализация: Май 2025">Last updated: May 2025</p>
-    <div class="modal-body">
-      <h3 data-en="1. About this website" data-bg="1. За този уебсайт">1. About this website</h3>
-      <p data-en="This website is operated by Kaliora Management &amp; Consulting, Plovdiv, Bulgaria. By accessing and using this site, you agree to these Terms &amp; Conditions." data-bg="Този уебсайт се управлява от Kaliora Management &amp; Consulting, Пловдив, България. Чрез достъпа и използването на сайта вие се съгласявате с тези Общи условия.">This website is operated by Kaliora Management &amp; Consulting, Plovdiv, Bulgaria. By accessing and using this site, you agree to these Terms &amp; Conditions.</p>
-      <h3 data-en="2. Services" data-bg="2. Услуги">2. Services</h3>
-      <p data-en="The information on this website is for general informational purposes. Kaliora provides management consulting, operational advisory, and related services. Specific terms for individual engagements are agreed separately in writing." data-bg="Информацията на този сайт е с обща информационна цел. Kaliora предоставя управленски консултинг, оперативни консултации и свързани услуги. Специфичните условия за отделни ангажименти се договарят отделно в писмена форма.">The information on this website is for general informational purposes. Kaliora provides management consulting, operational advisory, and related services. Specific terms for individual engagements are agreed separately in writing.</p>
-      <h3 data-en="3. Intellectual property" data-bg="3. Интелектуална собственост">3. Intellectual property</h3>
-      <p data-en="All content on this website — including text, design, logos, and graphics — is the property of Kaliora Management &amp; Consulting and may not be reproduced without written permission." data-bg="Цялото съдържание на този уебсайт — включително текстове, дизайн, лога и графики — е собственост на Kaliora Management &amp; Consulting и не може да се възпроизвежда без писмено разрешение.">All content on this website — including text, design, logos, and graphics — is the property of Kaliora Management &amp; Consulting and may not be reproduced without written permission.</p>
-      <h3 data-en="4. Limitation of liability" data-bg="4. Ограничаване на отговорността">4. Limitation of liability</h3>
-      <p data-en="Kaliora makes no warranties regarding the accuracy or completeness of information on this site. We are not liable for any decisions made based on information found here." data-bg="Kaliora не дава гаранции за точността или пълнотата на информацията на този сайт. Не носим отговорност за решения, взети въз основа на информация, намерена тук.">Kaliora makes no warranties regarding the accuracy or completeness of information on this site. We are not liable for any decisions made based on information found here.</p>
-      <h3 data-en="5. Governing law" data-bg="5. Приложимо право">5. Governing law</h3>
-      <p data-en="These Terms are governed by the laws of the Republic of Bulgaria. Any disputes shall be resolved in the courts of Plovdiv, Bulgaria." data-bg="Тези Общи условия се регулират от законодателството на Република България. Всички спорове се решават в съдилищата на Пловдив, България.">These Terms are governed by the laws of the Republic of Bulgaria. Any disputes shall be resolved in the courts of Plovdiv, Bulgaria.</p>
-      <h3 data-en="6. Contact" data-bg="6. Контакт">6. Contact</h3>
-      <p>Kaliora Management &amp; Consulting<br/>Plovdiv, Bulgaria<br/><a href="mailto:georgi@kalioraltd.com">georgi@kalioraltd.com</a></p>
+
+    <!-- ENGLISH -->
+    <div class="modal-lang modal-lang-en">
+      <p class="modal-tag">Legal Document</p>
+      <h2 class="modal-title">Terms &amp; Conditions</h2>
+      <p class="modal-date">Version 1.0 &mdash; Effective date: May 2025</p>
+      <div class="modal-body">
+        <h3>1. Parties and Scope</h3>
+        <p>These Terms govern access to and use of kalioraltd.com (&ldquo;the Website&rdquo;) operated by <strong>КАЛИОРА МЕНИДЖМЪНТ &amp; КОНСУЛТИНГ ЕООД</strong>, ЕИК 208759364, гр. Пловдив, ул. Анри Барбюс 8, МОЛ: Georgi Kalaydzhiev, <a href="mailto:georgi@kalioraltd.com">georgi@kalioraltd.com</a>.</p>
+        <p>By accessing or using this Website, you agree to these Terms in their entirety.</p>
+        <h3>2. Nature of the Website and Services</h3>
+        <p>The Website provides general information about consulting, advisory, and business development services. Content does not constitute a binding offer, legal, financial, or investment advice. Individual engagements are defined in separate written contracts.</p>
+        <h3>3. Intellectual Property Rights</h3>
+        <p>All content on this Website is the property of the Company or used under licence. Without prior written consent, Users may not copy, reproduce, distribute, modify, or use content for commercial purposes.</p>
+        <h3>4. Accuracy of Information</h3>
+        <p>The Company makes no warranties as to the completeness or accuracy of information published and reserves the right to modify content at any time without notice.</p>
+        <h3>5. Limitation of Liability</h3>
+        <p>To the maximum extent permitted by law, the Company is not liable for any direct, indirect, incidental or consequential loss arising from use of the Website, decisions based on its content, technical interruptions, third-party websites, or unauthorised data access. Users access the Website at their own risk.</p>
+        <h3>6. Third-Party Links and Services</h3>
+        <p>The Website integrates Google Analytics, Calendly, EmailJS, Cloudflare, and Zoho Mail. Third-party links are provided for convenience only. The Company is not responsible for third-party content or services.</p>
+        <h3>7. User Obligations</h3>
+        <p>Users agree not to: use the Website for unlawful purposes; attempt unauthorised access; introduce malware; use automated scraping tools; impersonate the Company or its representatives.</p>
+        <h3>8. Data Protection and Cookies</h3>
+        <p>Personal data is processed in accordance with our Privacy Policy, available on this Website. Non-essential cookies are only activated with explicit consent.</p>
+        <h3>9. Amendments</h3>
+        <p>The Company may amend these Terms at any time. Continued use of the Website constitutes acceptance. The current version is always published on this Website.</p>
+        <h3>10. Severability</h3>
+        <p>If any provision is found invalid or unenforceable, the remaining provisions continue in full force and effect.</p>
+        <h3>11. Governing Law and Jurisdiction</h3>
+        <p>These Terms are governed by the laws of the Republic of Bulgaria and applicable EU regulations. Disputes shall be submitted to the exclusive jurisdiction of the competent courts in Plovdiv, Bulgaria.</p>
+        <h3>12. Contact</h3>
+        <p>КАЛИОРА МЕНИДЖМЪНТ &amp; КОНСУЛТИНГ ЕООД &mdash; гр. Пловдив, ул. Анри Барбюс 8 &mdash; ЕИК: 208759364<br/><a href="mailto:georgi@kalioraltd.com">georgi@kalioraltd.com</a></p>
+      </div>
     </div>
+
+    <!-- BULGARIAN -->
+    <div class="modal-lang modal-lang-bg">
+      <p class="modal-tag">Правен документ</p>
+      <h2 class="modal-title">Общи условия</h2>
+      <p class="modal-date">Версия 1.0 &mdash; В сила от: Май 2025</p>
+      <div class="modal-body">
+        <h3>1. Страни и обхват</h3>
+        <p>Настоящите Общи условия уреждат достъпа до и използването на kalioraltd.com (&bdquo;Сайтът&ldquo;), управляван от <strong>КАЛИОРА МЕНИДЖМЪНТ &amp; КОНСУЛТИНГ ЕООД</strong>, ЕИК 208759364, гр. Пловдив, ул. Анри Барбюс 8, МОЛ: Георги Калайджиев, <a href="mailto:georgi@kalioraltd.com">georgi@kalioraltd.com</a>.</p>
+        <p>С достъпа до и използването на Сайта Потребителят приема настоящите условия в тяхната цялост.</p>
+        <h3>2. Характер на Сайта и услугите</h3>
+        <p>Сайтът предоставя обща информация за консултантски, advisory и бизнес развойни услуги. Съдържанието не представлява обвързващо предложение, правен, финансов или инвестиционен съвет. Индивидуалните ангажименти се уреждат в отделни писмени договори.</p>
+        <h3>3. Права върху интелектуална собственост</h3>
+        <p>Цялото съдържание на Сайта е собственост на Дружеството или се използва по лиценз. Без предварително писмено съгласие Потребителите нямат право да копират, разпространяват, модифицират или използват съдържанието за търговски цели.</p>
+        <h3>4. Точност на информацията</h3>
+        <p>Дружеството не дава гаранции за пълнота или точност на публикуваната информация и си запазва правото да изменя съдържанието по всяко време без предизвестие.</p>
+        <h3>5. Ограничаване на отговорността</h3>
+        <p>В максималната степен, допустима от приложимото право, Дружеството не носи отговорност за преки, непреки, инцидентни или последващи вреди от използването на Сайта, решения, основани на съдържанието му, технически прекъсвания, уебсайтове на трети страни или неоторизиран достъп до данни. Потребителят използва Сайта на собствен риск.</p>
+        <h3>6. Услуги и връзки към трети страни</h3>
+        <p>Сайтът интегрира Google Analytics, Calendly, EmailJS, Cloudflare и Zoho Mail. Връзките към трети страни са предоставени за удобство. Дружеството не носи отговорност за тяхното съдържание или практики.</p>
+        <h3>7. Задължения на потребителите</h3>
+        <p>Потребителите се задължават да не: използват Сайта за незаконни цели; опитват неоторизиран достъп; въвеждат зловреден код; използват автоматизирани инструменти за извличане на данни; представят се за Дружеството или негови представители.</p>
+        <h3>8. Защита на личните данни и бисквитки</h3>
+        <p>Личните данни се обработват съгласно Политиката за поверителност, налична на Сайта. Нефункционални бисквитки се активират само с изрично съгласие.</p>
+        <h3>9. Изменения</h3>
+        <p>Дружеството може да изменя настоящите условия по всяко време. Продължаването на използването на Сайта представлява приемане на измененията. Актуалната версия е винаги публикувана на Сайта.</p>
+        <h3>10. Делимост</h3>
+        <p>Ако някоя разпоредба бъде обявена за недействителна или неприложима, останалите разпоредби продължават да действат в пълна сила.</p>
+        <h3>11. Приложимо право и юрисдикция</h3>
+        <p>Настоящите условия се уреждат от законодателството на Република България и приложимото право на ЕС. Споровете се отнасят до компетентния съд в гр. Пловдив, Република България.</p>
+        <h3>12. Контакт</h3>
+        <p>КАЛИОРА МЕНИДЖМЪНТ &amp; КОНСУЛТИНГ ЕООД &mdash; гр. Пловдив, ул. Анри Барбюс 8 &mdash; ЕИК: 208759364<br/><a href="georgi@kalioraltd.com">georgi@kalioraltd.com</a></p>
+      </div>
+    </div>
+
   </div>
 </div>
 
