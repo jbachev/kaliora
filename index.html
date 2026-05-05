@@ -337,6 +337,33 @@
     html:not([lang="bg"]) .modal-lang-bg { display:none; }
     html[lang="bg"] .modal-lang-bg { display:block; }
     html[lang="bg"] .modal-lang-en { display:none; }
+
+    /* FAQ SECTION */
+    #faq { background:var(--ink-2); }
+    .faq-list { margin-top:3rem; max-width:820px; }
+    .faq-item { border-bottom:1px solid var(--border); }
+    .faq-item:first-child { border-top:1px solid var(--border); }
+    .faq-question {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:1.4rem 0; cursor:pointer; gap:1rem;
+    }
+    .faq-q-text {
+      font-family:var(--ff-d); font-size:1.15rem; font-weight:400;
+      color:var(--cream); line-height:1.3;
+    }
+    .faq-icon {
+      width:28px; height:28px; border:1px solid var(--border);
+      display:flex; align-items:center; justify-content:center;
+      flex-shrink:0; color:var(--gold); transition:transform 0.3s;
+    }
+    .faq-item.open .faq-icon { transform:rotate(45deg); }
+    .faq-answer {
+      display:none; padding:0 0 1.4rem;
+      font-size:0.88rem; color:var(--muted); line-height:1.9;
+      max-width:700px;
+    }
+    .faq-item.open .faq-answer { display:block; }
+
     /* CONTACT */
     #contact { background:var(--ink); }
     .ci { max-width:1100px; margin:0 auto; }
@@ -418,6 +445,133 @@
   </style>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>emailjs.init("ESJvva0tzTzoXj3xG");</script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://www.kalioraltd.com/#business",
+        "name": "Kaliora Management & Consulting",
+        "legalName": "КАЛИОРА МЕНИДЖМЪНТ & КОНСУЛТИНГ ЕООД",
+        "url": "https://www.kalioraltd.com",
+        "logo": "https://www.kalioraltd.com/kaliora-logo.png",
+        "description": "Plovdiv-based management consulting firm specialising in operational transformation, entertainment and leisure management, retail and shopping centre management, venture development, deal structuring, and financial modelling across Central and Eastern Europe.",
+        "foundingDate": "2024",
+        "vatID": "208759364",
+        "areaServed": [
+          "Bulgaria", "Romania", "Poland", "Czech Republic",
+          "Hungary", "Serbia", "Central and Eastern Europe"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "ul. Anri Barbus 8",
+          "addressLocality": "Plovdiv",
+          "postalCode": "4000",
+          "addressCountry": "BG"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "42.1354",
+          "longitude": "24.7453"
+        },
+        "telephone": "+359898356783",
+        "email": "georgi@kalioraltd.com",
+        "sameAs": [
+          "https://www.linkedin.com/company/kaliora"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Management & Consulting Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Entertainment & Hospitality Operations", "description": "20+ year track record leading high-footfall entertainment, leisure, and hospitality operations across CEE." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Operations Optimisation", "description": "Multi-site operational audits, P&L ownership, KPI frameworks and structured execution roadmaps." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Retail & Shopping Centre Management", "description": "End-to-end management of retail environments and shopping centres across CEE." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Deal Structuring & Negotiations", "description": "Expert support in commercial negotiations, lease agreements, supplier contracts and partnership deals." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Marketing Effectiveness", "description": "Consumer behaviour analysis, digital communication, e-commerce strategy and brand positioning." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Leadership & Team Development", "description": "Executive coaching, leadership development and organisational capability building." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "New Venture Build", "description": "From concept validation to equity structuring, location analysis and operational launch." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Financial Modelling & Investment Advisory", "description": "Investment-grade financial models using IRR, NPV, EBITDA, and FCF frameworks." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "360° Business Diagnostic", "description": "Full diagnostic review of finances, operations, and team — delivering a concrete action plan within 14 days." } }
+          ]
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://www.kalioraltd.com/#founder",
+        "name": "Georgi Kalaydzhiev",
+        "jobTitle": "Managing Director & Founder",
+        "worksFor": { "@id": "https://www.kalioraltd.com/#business" },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Plovdiv",
+          "addressCountry": "BG"
+        },
+        "knowsAbout": [
+          "Multi-site operations management",
+          "P&L management",
+          "Retail management",
+          "Shopping centre management",
+          "Entertainment and leisure operations",
+          "IRR", "EBITDA", "NPV", "Financial modelling",
+          "CEE markets",
+          "Venture development",
+          "Commercial negotiations",
+          "4DX execution frameworks"
+        ],
+        "url": "https://www.kalioraltd.com/#team"
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.kalioraltd.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does Kaliora Management & Consulting do?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Kaliora is a Plovdiv-based management consulting firm that works with business owners, investors, and leadership teams across Central & Eastern Europe. We specialise in operational performance, retail and entertainment management, commercial negotiations, venture development, and financial modelling. Our work begins with a structured 360° Business Diagnostic that identifies where a business is losing money, time, or capacity."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the 360° Business Diagnostic?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The 360° Business Diagnostic is a structured, 14-day diagnostic review of your business across operations, financial performance, marketing effectiveness, and organisational capability. It delivers a Critical Points Report, a Quick Wins list, a financial ROI model, and a 6-month prioritised action plan. It is designed for business owners who want clarity on what is holding their business back and a concrete path forward."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What industries does Kaliora work with?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Our deepest expertise is in entertainment, leisure, and hospitality operations — built over 20+ years managing cinema complexes, FECs, and leisure venues across Central and Eastern Europe. We also work extensively with retail businesses, shopping centres, professional services companies, and investors launching new ventures."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where is Kaliora based and what markets do you serve?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Kaliora Management & Consulting is based in Plovdiv, Bulgaria, and works across Central and Eastern Europe, including Bulgaria, Romania, Poland, Czech Republic, Hungary, and Serbia."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I start working with Kaliora?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The first step is a free 30-minute discovery call to assess whether your business is the right fit for our diagnostic or consulting services. You can book directly through our website at kalioraltd.com or contact us at georgi@kalioraltd.com. There is no obligation and no sales pitch — just a direct conversation about your business."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -433,6 +587,7 @@
       <li><a href="#team"     data-en="Team"       data-bg="Екип">Team</a></li>
       <li><a href="#ventures" data-en="Ventures"   data-bg="Проекти">Ventures</a></li>
       <li><a href="#approach" data-en="Approach"   data-bg="Подход">Approach</a></li>
+      <li><a href="#faq"      data-en="FAQ"        data-bg="FAQ">FAQ</a></li>
       <li><a href="#contact"  data-en="Contact"    data-bg="Контакт">Contact</a></li>
     </ul>
     <div class="lang-toggle">
@@ -453,13 +608,14 @@
   <a href="#team"     onclick="closeMobileMenu()" data-en="Team"     data-bg="Екип">Team</a>
   <a href="#ventures" onclick="closeMobileMenu()" data-en="Ventures" data-bg="Проекти">Ventures</a>
   <a href="#approach" onclick="closeMobileMenu()" data-en="Approach" data-bg="Подход">Approach</a>
+  <a href="#faq"      onclick="closeMobileMenu()" data-en="FAQ"       data-bg="FAQ">FAQ</a>
   <a href="#contact"  onclick="closeMobileMenu()" data-en="Contact"  data-bg="Контакт">Contact</a>
 </div>
 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-bg">
-    <img src="img/Landing image.jpg" alt="Kaliora" loading="eager" />
+    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1800&q=80" alt="Kaliora" loading="eager" />
   </div>
   <div class="hero-content">
     <p class="eyebrow" data-en="Management &amp; Consulting" data-bg="Мениджмънт и консултинг">Management &amp; Consulting</p>
@@ -493,7 +649,7 @@
     <div class="sdiv"></div>
     <div class="about-text">
       <p data-en="Kaliora Management & Consulting is a Plovdiv-based advisory and venture development firm backed by a senior team with <strong>20+ years of multi-site leadership</strong> across retail, leisure, and entertainment in Central and Eastern Europe." data-bg="Kaliora Management & Consulting е консултантска компания за бизнес развитие, базирана в Пловдив, с екип с над <strong>20 години управленчески опит на висше ниво</strong> в търговията, развлеченията и услугите в Централна и Източна Европа.">Kaliora Management & Consulting is a Plovdiv-based advisory and venture development firm backed by a senior team with <strong>20+ years of multi-site leadership</strong> across retail, leisure, and entertainment in Central and Eastern Europe.</p>
-      <p data-en="Our foundation is execution at scale — leading organizations of 1000+ people, delivering new-site launches, operational transformations, and capability-building programmes across distributed networks. This hands-on experience shapes our understanding of <strong>performance, scalability, and sustainable growth</strong>." data-bg="Изграждаме и управляваме сложни оперативни структури — от организации с над 1000 служители до разгръщане и оптимизация на мащабни търговски мрежи и бизнес системи. Това определя нашия подход: <strong>практичен, структуриран и ориентиран към измерими резултати</strong>.">Our foundation is execution at scale — leading organizations of 1000+ people, delivering new-site launches, operational transformations, and capability-building programmes across distributed networks. This hands-on experience shapes our understanding of <strong>performance, scalability, and sustainable growth</strong>.</p>
+      <p data-en="Our foundation is execution at scale — leading organizations of 1000+ people, delivering new-site launches, operational transformations, and capability-building programmes across distributed networks. This hands-on experience shapes our understanding of <strong>performance, scalability, and sustainable growth</strong>." data-bg="в търговията, развлеченията и услугите в Централна и Източна Европа. Изграждаме и управляваме сложни оперативни структури — от организации с над 1000 служители до разгръщане и оптимизация на мащабни търговски мрежи и бизнес системи. Това определя нашия подход: <strong>практичен, структуриран и ориентиран към измерими резултати</strong>.">Our foundation is execution at scale — leading organizations of 1000+ people, delivering new-site launches, operational transformations, and capability-building programmes across distributed networks. This hands-on experience shapes our understanding of <strong>performance, scalability, and sustainable growth</strong>.</p>
     </div>
   </div>
 </section>
@@ -518,43 +674,43 @@
       <img class="svc-img" src="img/Operations and Management.jpg" alt="Operations" loading="lazy" />
       <div class="svc-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25"/></svg></div>
       <h3 data-en="Operations &amp; Management" data-bg="Оперативен мениджмънт">Operations &amp; Management</h3>
-      <p data-en="We conduct comprehensive multi-site operational audits and take full ownership of P&amp;L performance and cost management. By implementing robust KPI frameworks and structured execution roadmaps, we turn operational insights into action. We identify inefficiencies at their root and develop improvement plans that are firmly grounded in measurable commercial outcomes." data-bg="Извършваме цялостни оперативни одити на множество обекти и поемаме пълна отговорност за представянето по P&amp;L и управлението на разходите. ЧВнедряваме ясни KPI рамки и структурирани планове за изпълнение, които превръщат анализа в конкретни действия. Идентифицираме оперативните неефективности в тяхната същност и разработваме ясни планове за подобрение с измерим търговски ефект.">We conduct comprehensive multi-site operational audits and take full ownership of P&amp;L performance and cost management. By implementing robust KPI frameworks and structured execution roadmaps, we turn operational insights into action. We identify inefficiencies at their root and develop improvement plans that are firmly grounded in measurable commercial outcomes.</p>
+      <p data-en="We conduct comprehensive multi-site operational audits and take full ownership of P&amp;L performance and cost management. By implementing robust KPI frameworks and structured execution roadmaps, we turn operational insights into action. We identify inefficiencies at their root and develop improvement plans that are firmly grounded in measurable commercial outcomes." data-bg="Извършваме цялостни оперативни одити на множество обекти и поемаме пълна отговорност за представянето по P&amp;L и управлението на разходите. Чрез внедряване на ясни KPI рамки и структурирани планове за изпълнение превръщаме оперативните анализи в конкретни действия. Идентифицираме неефективностите в тяхната същност и разработваме планове за подобрение, базирани на ясно измерими търговски резултати.">We conduct comprehensive multi-site operational audits and take full ownership of P&amp;L performance and cost management. By implementing robust KPI frameworks and structured execution roadmaps, we turn operational insights into action. We identify inefficiencies at their root and develop improvement plans that are firmly grounded in measurable commercial outcomes.</p>
     </div>
     <div class="svc reveal d1">
       <img class="svc-img" src="img/Retail and SC.jpg" alt="Retail" loading="lazy" />
       <div class="svc-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 003.75.614m-16.5 0a3.004 3.004 0 01-.621-4.72L4.318 3.44A1.5 1.5 0 015.378 3h13.243a1.5 1.5 0 011.06.44l1.19 1.189a3 3 0 01-.621 4.72m-13.5 8.65h3.75a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75H6.75a.75.75 0 00-.75.75v3.75c0 .415.336.75.75.75z"/></svg></div>
-      <h3 data-en="Retail &amp; Shopping Centre Management" data-bg="Управление на търговски площи и центрове">Retail &amp; Shopping Centre Management</h3>
-      <p data-en="Successful management of retail environments and shopping centers demands a complete approach — from strategic tenant mix planning to footfall optimization. By establishing rigorous operational standards and performance benchmarking across the full retail spectrum, every commercial space is optimized for growth. This ensures long-term asset value and a seamless experience for both tenants and visitors." data-bg="Осигуряваме цялостно управление на търговски площи и търговски центрове — от стратегическото планиране на микса от наематели до оптимизацията на клиентския поток. Въвеждаме високи оперативни стандарти и системи за сравнителен анализ (benchmarking) в целия търговски портфейл. Целта ни е всяко пространство да се превърне в стабилно и устойчиво работеща търговска дестинация.">Successful management of retail environments and shopping centers demands a complete approach — from strategic tenant mix planning to footfall optimization. By establishing rigorous operational standards and performance benchmarking across the full retail spectrum, every commercial space is optimized for growth. This ensures long-term asset value and a seamless experience for both tenants and visitors.</p>
+      <h3 data-en="Retail &amp; Shopping Centre Management" data-bg="Управление на търговски площи и търговски центрове">Retail &amp; Shopping Centre Management</h3>
+      <p data-en="Successful management of retail environments and shopping centers demands a complete approach — from strategic tenant mix planning to footfall optimization. By establishing rigorous operational standards and performance benchmarking across the full retail spectrum, every commercial space is optimized for growth. This ensures long-term asset value and a seamless experience for both tenants and visitors." data-bg="Осигуряваме цялостно управление на търговски площи и търговски центрове — от стратегическото планиране на микса от наематели до оптимизацията на клиентския поток. Налагаме високи оперативни стандарти и внедряваме системи за сравнителен анализ на резултатите (benchmarking) в целия търговски спектър. Нашата цел е да превърнем всяко пространство в печеливша дестинация с устойчиво представяне.">Successful management of retail environments and shopping centers demands a complete approach — from strategic tenant mix planning to footfall optimization. By establishing rigorous operational standards and performance benchmarking across the full retail spectrum, every commercial space is optimized for growth. This ensures long-term asset value and a seamless experience for both tenants and visitors.</p>
     </div>
     <div class="svc reveal d2">
       <img class="svc-img" src="img/Negotiations.jpg" alt="Negotiations" loading="lazy" />
       <div class="svc-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z"/></svg></div>
       <h3 data-en="Negotiations &amp; Deal Closing" data-bg="Водене на преговори и сключване на сделки">Negotiations &amp; Deal Closing</h3>
-      <p data-en="Expert support in commercial negotiations, lease agreements, supplier contracts, franchise terms, and partnership deals. We help you prepare, structure, and close agreements that protect your interests and maximise long-term value." data-bg="Осигуряваме експертна подкрепа при търговски преговори, договори за наем, договори с доставчици, франчайз споразумения и партньорства. Ние Ви помагаме да подготвите, структурирате и финализирате споразумения, които защитават Вашите интереси и максимизират дългосрочната стойност за Вашия бизнес.">Expert support in commercial negotiations, lease agreements, supplier contracts, franchise terms, and partnership deals. We help you prepare, structure, and close agreements that protect your interests and maximise long-term value.</p>
+      <p data-en="Expert support in commercial negotiations, lease agreements, supplier contracts, franchise terms, and partnership deals. We help you prepare, structure, and close agreements that protect your interests and maximise long-term value." data-bg="Експертна подкрепа при търговски преговори, договори за наем, договори с доставчици, франчайз условия и партньорски споразумения. Ние Ви помагаме да подготвите, структурирате и финализирате споразумения, които защитават Вашите интереси и максимизират дългосрочната стойност за Вашия бизнес.">Expert support in commercial negotiations, lease agreements, supplier contracts, franchise terms, and partnership deals. We help you prepare, structure, and close agreements that protect your interests and maximise long-term value.</p>
     </div>
     <div class="svc reveal d3">
       <img class="svc-img" src="img/Marketing Strategy.jpg" alt="Marketing" loading="lazy" />
       <div class="svc-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 110-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 01-1.44-4.282m3.102.069a18.03 18.03 0 01-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 018.835 2.535M10.34 6.66a23.847 23.847 0 008.835-2.535m0 0A23.74 23.74 0 0018.795 3m.38 1.125a23.91 23.91 0 011.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 001.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 010 3.46"/></svg></div>
       <h3 data-en="Marketing Strategy" data-bg="Стратегически Маркетинг">Marketing Strategy</h3>
-      <p data-en="Understanding your customer is where it starts — driving growth is where we take it. We combine consumer insight, omnichannel marketing, and e-commerce strategy to build brands that resonate and perform, with tailored solutions for health, hospitality, educational and professional services businesses." data-bg="Разбирането на клиента е само началото на растежа. Ние съчетаваме потребителски анализи, омниканална маркетинг стратегии и решения за електронна търговия, за да изграждаме брандове с реално пазарно въздействие. Предлагаме персонализирани решения за бизнеси в сферата на здравеопазването, хотелиерството, образователните и професионалните услуги.">Understanding your customer is where it starts — driving growth is where we take it. We combine consumer insight, omnichannel marketing, and e-commerce strategy to build brands that resonate and perform, with tailored solutions for health, hospitality, educational and professional services businesses.</p>
+      <p data-en="Understanding your customer is where it starts — driving growth is where we take it. We combine consumer insight, omnichannel marketing, and e-commerce strategy to build brands that resonate and perform, with tailored solutions for health, hospitality, educational and professional services businesses." data-bg="Разбирането на клиента е само началото – нашата цел е постигането на растеж. Ние съчетаваме потребителски анализи, омниканална маркетинг стратегия и решения за електронна търговия, за да изградим брандове, които вълнуват и постигат резултати. Предлагаме персонализирани решения за бизнеси в сферата на здравеопазването, хотелиерството, образователните и професионалните услуги.">Understanding your customer is where it starts — driving growth is where we take it. We combine consumer insight, omnichannel marketing, and e-commerce strategy to build brands that resonate and perform, with tailored solutions for health, hospitality, educational and professional services businesses.</p>
     </div>
     <div class="svc reveal">
       <img class="svc-img" src="img/Coaching & Wellbeing.jpg" alt="Coaching" loading="lazy" />
       <div class="svc-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z"/></svg></div>
       <h3 data-en="Leadership, Coaching &amp; Development" data-bg="Лидерство, коучинг и развитие">Leadership, Coaching &amp; Development</h3>
-      <p data-en="Interim management, team structuring, and training combined with professional coaching and psychotherapeutic support for leaders and teams. We support organisations in managing change, building resilient high-performing teams, and improving execution and results across different business contexts." data-bg="Предлагаме временен мениджмънт, изграждане и структуриране на екипи и провеждане на обучения, съчетани с професионален коучинг и психотерапевтична подкрепа за ръковдни кадри и екипи. Подпомагаме организации и лидери да преминат успешно през етап на фирмени промени, изграждането на устойчиви, високоефективни екипи и постигането на по-добри бизнес резултати.">Interim management, team structuring, and training combined with professional coaching and psychotherapeutic support for leaders and teams. We support organisations in managing change, building resilient high-performing teams, and improving execution and results across different business contexts.</p>
+      <p data-en="Interim management, team structuring, and training combined with professional coaching and psychotherapeutic support for leaders and teams. We support organisations in managing change, building resilient high-performing teams, and improving execution and results across different business contexts." data-bg="Временен мениджмънт, изграждане и структуриране на екипи и провеждане на обучения, съчетани с професионален коучинг и психотерапевтична подкрепа за ръковдни кадри и екипи. Подпомагаме организации и лидери да преминат успешно през етап на фирмени промени, изграждането на устойчиви, високоефективни екипи и постигането на по-добри бизнес резултати.">Interim management, team structuring, and training combined with professional coaching and psychotherapeutic support for leaders and teams. We support organisations in managing change, building resilient high-performing teams, and improving execution and results across different business contexts.</p>
     </div>
     <div class="svc reveal d1">
       <img class="svc-img" src="img/Venture Development.jpg" alt="Ventures" loading="lazy" />
       <div class="svc-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/></svg></div>
-      <h3 data-en="Venture Development" data-bg="Предприемачество">Venture Development</h3>
-      <p data-en="Every successful venture starts with the right foundations.We partner from concept to launch — validating ideas, shaping business models, structuring equity, and preparing compelling investor narratives — to build ventures that are both market-ready and built to endure." data-bg="Всеки успешен бизнес започва с ясна основа. Подпомагаме ви от първоначалната концепция до старта — валидиране на идеи, изграждане на бизнес модел и структуриране на капитал. Подготвяме ви за инвеститорски срещи с ясна, структурирана и убедителна бизнес история, за да изградим заедно бизнес, който не просто излиза на пазара, а остава на него.">Every successful venture starts with the right foundations.We partner from concept to launch — validating ideas, shaping business models, structuring equity, and preparing compelling investor narratives — to build ventures that are both market-ready and built to endure.</p>
+      <h3 data-en="Venture Development" data-bg="Развитие на Предприятия">Venture Development</h3>
+      <p data-en="Every successful venture starts with the right foundations.We partner from concept to launch — validating ideas, shaping business models, structuring equity, and preparing compelling investor narratives — to build ventures that are both market-ready and built to endure." data-bg="Всеки голям успех започва с правилната основа. Ние сме до вас от концепцията до официалния старт — помагаме ви да тествате идеите си, да изградите печеливш бизнес модел и да структурирате капитала си интелигентно. Подготвяме ви за срещите с инвеститори с история, която вдъхновява, за да изградим заедно бизнес, който не просто излиза на пазара, а остава на него.">Every successful venture starts with the right foundations.We partner from concept to launch — validating ideas, shaping business models, structuring equity, and preparing compelling investor narratives — to build ventures that are both market-ready and built to endure.</p>
     </div>
     <div class="svc reveal d3">
       <img class="svc-img" src="img/Finance.png" alt="Finance" loading="lazy" />
       <div class="svc-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
       <h3 data-en="Financial Modelling" data-bg="Финансово Моделиране">Financial Modelling</h3>
-      <p data-en="Clarity drives investment. We develop rigorous financial models grounded in IRR, NPV, EBITDA, FCF, and MOIC methodologies — enabling businesses and investors to evaluate opportunities, mitigate risk, and act decisively. From feasibility to growth scenarios, we turn numbers into strategic advantage." data-bg="Яснотата създава увереност в инвестиционните решения. Ние разработваме прецизни финансови модели, базирани на методологиите IRR, NPV, EBITDA, FCF и MOIC, които позволява на бизнеса и инвеститорите да оценяват обективно възможностите, да минимизират риска и да действат решително. От предпроектни анализи до сценарии за растеж, ние превръщаме числата в стратегическо управленческо предимство.">Clarity drives investment. We develop rigorous financial models grounded in IRR, NPV, EBITDA, FCF, and MOIC methodologies — enabling businesses and investors to evaluate opportunities, mitigate risk, and act decisively. From feasibility to growth scenarios, we turn numbers into strategic advantage.</p>
+      <p data-en="Clarity drives investment. We develop rigorous financial models grounded in IRR, NPV, EBITDA, FCF, and MOIC methodologies — enabling businesses and investors to evaluate opportunities, mitigate risk, and act decisively. From feasibility to growth scenarios, we turn numbers into strategic advantage." data-bg="Яснотата привлича инвестиции. Ние разработваме прецизни финансови модели, базирани на методологиите IRR, NPV, EBITDA, FCF и MOIC — това позволява на бизнеса и инвеститорите да оценяват възможности, да минимизират риска и да действат решително. От предпроектни проучвания до сценарии за растеж, ние превръщаме числата в стратегическо предимство.">Clarity drives investment. We develop rigorous financial models grounded in IRR, NPV, EBITDA, FCF, and MOIC methodologies — enabling businesses and investors to evaluate opportunities, mitigate risk, and act decisively. From feasibility to growth scenarios, we turn numbers into strategic advantage.</p>
     </div>
   </div>
 </section>
@@ -745,7 +901,7 @@
 
 <!-- IMAGE BREAK -->
 <div class="img-break">
-  <img src="img/We stay.jpg" alt="Team" loading="lazy" />
+  <img src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=1600&q=80" alt="Team" loading="lazy" />
   <div class="img-break-inner">
     <blockquote data-en="&ldquo;Most consultants tell you what to do.<br/>We stay until it&rsquo;s <em>done.</em>&rdquo;" data-bg="&ldquo;Повечето консултанти ти казват какво да правиш.<br/>Ние оставаме докато е <em>свършено.</em>&rdquo;">&ldquo;Most consultants tell you what to do.<br/>We stay until it&rsquo;s <em>done.</em>&rdquo;</blockquote>
   </div>
@@ -769,7 +925,7 @@
       </div>
     </div>
     <div class="vent">
-      <img src="img/Management Consulting.jpg" alt="Consulting" loading="lazy" />
+      <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=900&q=80" alt="Consulting" loading="lazy" />
       <div class="vent-body">
         <div class="vent-num">02</div>
         <div class="vent-name" data-en="Management Consulting" data-bg="Управленски Консултинг">Management Consulting</div>
@@ -812,6 +968,58 @@
         <p class="tc-desc" data-en="Combining psychotherapeutic expertise with professional coaching, she supports leaders and teams in building resilience, enhancing wellbeing, and performing under pressure. Delivers targeted interventions through individual coaching, group workshops, and bespoke development programmes — enabling organizations to cultivate healthier, more effective, and high-performing environments." data-bg="Чрез съчетаване на психотерапевтична експертиза с професионален коучинг, тя подкрепя лидери и екипи в изграждането на устойчивост, подобряването на благосъстоянието (wellbeing) и ефективната работа под напрежение. Провежда целенасочени интервенции чрез индивидуален коучинг, групови уъркшопи и персонализирани програми за развитие, които позволяват на организациите да изграждат по-здравословна, ефективна и високопроизводителна работна среда.">Combining psychotherapeutic expertise with professional coaching, she supports leaders and teams in building resilience, enhancing wellbeing, and performing under pressure. Delivers targeted interventions through individual coaching, group workshops, and bespoke development programmes — enabling organizations to cultivate healthier, more effective, and high-performing environments.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="reveal">
+    <p class="stag" data-en="Quick Answers" data-bg="Бързи Отговори">Quick Answers</p>
+    <h2 class="sh" data-en="Frequently asked <em>questions</em>" data-bg="Често задавани <em>въпроси</em>">Frequently asked <em>questions</em></h2>
+    <div class="sdiv"></div>
+  </div>
+  <div class="faq-list reveal">
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-q-text" data-en="What does Kaliora actually do?" data-bg="Какво всъщност прави Kaliora?">What does Kaliora actually do?</span>
+        <div class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></div>
+      </div>
+      <div class="faq-answer" data-en="Kaliora is a management consulting firm based in Plovdiv, Bulgaria. We work with business owners, investors, and leadership teams across Central & Eastern Europe to improve operational performance, fix what isn't working, structure deals, and build new ventures. We start with a structured 360° Business Diagnostic that identifies exactly where a business is losing money, time, or capacity." data-bg="Kaliora е консултантска фирма, базирана в Пловдив, България. Работим с бизнес собственици, инвеститори и ръководни екипи в ЦИЕ за подобряване на оперативното представяне, отстраняване на проблеми, структуриране на сделки и изграждане на нови предприятия. Започваме с 360° Бизнес Диагностика, която идентифицира точно къде бизнесът губи пари, време или капацитет.">Kaliora is a management consulting firm based in Plovdiv, Bulgaria. We work with business owners, investors, and leadership teams across Central & Eastern Europe to improve operational performance, fix what isn't working, structure deals, and build new ventures. We start with a structured 360° Business Diagnostic that identifies exactly where a business is losing money, time, or capacity.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-q-text" data-en="What is the 360° Business Diagnostic?" data-bg="Какво е 360° Бизнес Диагностиката?">What is the 360° Business Diagnostic?</span>
+        <div class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></div>
+      </div>
+      <div class="faq-answer" data-en="It is a structured, 14-day review of your business across operations, financial performance, marketing effectiveness, and organisational capability. You receive a Critical Points Report, a Quick Wins list (changes you can implement immediately), a financial ROI model, and a 6-month prioritised action plan. It is designed for owners who want clarity and a concrete path forward — not a report that sits in a drawer." data-bg="Структуриран 14-дневен преглед на бизнеса ви в областта на операциите, финансовото представяне, маркетинговата ефективност и организационните способности. Получавате Доклад за критични точки, Списък с бързи победи, финансов ROI модел и 6-месечен приоритетен план за действие — за собственици, които искат яснота и конкретен път напред.">It is a structured, 14-day review of your business across operations, financial performance, marketing effectiveness, and organisational capability. You receive a Critical Points Report, a Quick Wins list (changes you can implement immediately), a financial ROI model, and a 6-month prioritised action plan. It is designed for owners who want clarity and a concrete path forward — not a report that sits in a drawer.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-q-text" data-en="What industries do you work with?" data-bg="С какви индустрии работите?">What industries do you work with?</span>
+        <div class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></div>
+      </div>
+      <div class="faq-answer" data-en="Our deepest expertise is in entertainment, leisure, and hospitality — built over 20+ years managing venues across CEE. We also work with retail businesses, shopping centres, professional services companies, and investors launching new ventures. If your business has operations, people, and commercial targets — we can help." data-bg="Най-дълбоката ни експертиза е в развлеченията, отдиха и хотелиерството — изградена за 20+ години управление на обекти в ЦИЕ. Работим също с търговски бизнеси, молове, professional services компании и инвеститори, стартиращи нови предприятия.">Our deepest expertise is in entertainment, leisure, and hospitality — built over 20+ years managing venues across CEE. We also work with retail businesses, shopping centres, professional services companies, and investors launching new ventures. If your business has operations, people, and commercial targets — we can help.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-q-text" data-en="Where are you based and what markets do you serve?" data-bg="Къде се намирате и какви пазари обслужвате?">Where are you based and what markets do you serve?</span>
+        <div class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></div>
+      </div>
+      <div class="faq-answer" data-en="We are based in Plovdiv, Bulgaria and work across Central and Eastern Europe — including Bulgaria, Romania, Poland, Czech Republic, Hungary, and Serbia. Engagements can be conducted in person or remotely depending on the nature and scope of the work." data-bg="Базирани сме в Пловдив, България и работим в Централна и Източна Европа — включително България, Румъния, Полша, Чехия, Унгария и Сърбия. Ангажиментите могат да се провеждат присъствено или дистанционно в зависимост от характера и обхвата на работата.">We are based in Plovdiv, Bulgaria and work across Central and Eastern Europe — including Bulgaria, Romania, Poland, Czech Republic, Hungary, and Serbia. Engagements can be conducted in person or remotely depending on the nature and scope of the work.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-q-text" data-en="How do I start working with Kaliora?" data-bg="Как да започна работа с Kaliora?">How do I start working with Kaliora?</span>
+        <div class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></div>
+      </div>
+      <div class="faq-answer" data-en="The first step is a free 30-minute discovery call. We will assess whether your business is the right fit for our diagnostic or consulting services — no obligation, no sales pitch. You can book directly through this website or email georgi@kalioraltd.com." data-bg="Първата стъпка е безплатен 30-минутен разговор. Ще преценим дали бизнесът ви е подходящ за нашата диагностика или консултантски услуги — без ангажимент, без търговски натиск. Можете да запазите час директно чрез сайта или да пишете на georgi@kalioraltd.com.">The first step is a free 30-minute discovery call. We will assess whether your business is the right fit for our diagnostic or consulting services — no obligation, no sales pitch. You can book directly through this website or email georgi@kalioraltd.com.</div>
+    </div>
+
   </div>
 </section>
 
@@ -921,6 +1129,7 @@
     <a href="#team"     data-en="Team"       data-bg="Екип">Team</a>
     <a href="#ventures" data-en="Ventures"   data-bg="Проекти">Ventures</a>
     <a href="#approach" data-en="Approach"   data-bg="Подход">Approach</a>
+    <a href="#faq"      data-en="FAQ"        data-bg="FAQ">FAQ</a>
     <a href="#contact"  data-en="Contact"    data-bg="Контакт">Contact</a>
     <a href="javascript:void(0)" onclick="openModal('privacy')" data-en="Privacy Policy" data-bg="Политика за поверителност">Privacy Policy</a>
     <a href="javascript:void(0)" onclick="openModal('terms')" data-en="Terms &amp; Conditions" data-bg="Общи условия">Terms &amp; Conditions</a>
@@ -1110,6 +1319,27 @@
       if (e.target === this) closeModal(this.id.replace('modal-',''));
     });
   });
+
+
+  // FAQ toggle
+  function toggleFaq(questionEl) {
+    const item = questionEl.parentElement;
+    const isOpen = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    // Open clicked if it wasn't open
+    if (!isOpen) item.classList.add('open');
+    // Apply lang to answer
+    const answer = item.querySelector('.faq-answer');
+    const lang = window._kalioraLang || 'en';
+    if (answer.getAttribute('data-' + lang)) {
+      answer.textContent = answer.getAttribute('data-' + lang);
+    }
+    const qtext = item.querySelector('.faq-q-text');
+    if (qtext && qtext.getAttribute('data-' + lang)) {
+      qtext.textContent = qtext.getAttribute('data-' + lang);
+    }
+  }
 
   // KALIORA METHOD toggle
   function toggleMethod() {
