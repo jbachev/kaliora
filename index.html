@@ -150,9 +150,11 @@
     .vent { position:relative; height:400px; overflow:hidden; }
     .vent img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s; filter:brightness(0.45); }
     .vent:hover img { transform:scale(1.06); filter:brightness(0.35); }
-    .vent-body { position:absolute; inset:0; padding:2.4rem; display:flex; flex-direction:column; justify-content:flex-end; background:linear-gradient(to top,rgba(42,42,42,0.88) 0%,transparent 55%); }
+    .vent-body { position:absolute; inset:0; padding:2.6rem; display:flex; flex-direction:column; justify-content:flex-start; background:linear-gradient(to bottom,rgba(42,42,42,0) 0%,rgba(42,42,42,0) 50%,transparent 100%); }
     .vent-num { font-family:var(--ff-d); font-size:0.85rem; color:var(--gold); opacity:0.7; margin-bottom:0.5rem; }
-    .vent-name { font-family:var(--ff-d); font-size:2.1rem; font-weight:400; color:var(--cream); margin-bottom:0.5rem; }
+    .vent-name { font-family:var(--ff-d); font-size:2.1rem; font-weight:400; color:var(--cream); margin-bottom:0.6rem; line-height:1.15; }
+    .vent-desc { font-size:0.82rem; color:rgba(255,255,255,0.8); line-height:1.7; margin-top:0.6rem; max-height:0; overflow:hidden; transition:max-height 0.4s ease, opacity 0.4s ease; opacity:0; }
+    .vent:hover .vent-desc { max-height:200px; opacity:1; }
     .vent-tag { font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,169,110,0.4); display:inline-block; padding:0.25rem 0.8rem; margin-bottom:1rem; }
     .vent-desc { font-size:0.84rem; color:rgba(244,238,226,0.72); line-height:1.7; max-width:420px; opacity:0; transform:translateY(8px); transition:opacity 0.4s,transform 0.4s; }
     .vent:hover .vent-desc { opacity:1; transform:none; }
@@ -946,31 +948,41 @@
 <!-- VENTURES -->
 <section id="ventures">
   <div class="reveal">
-    <p class="stag" data-en="Proof of Work" data-bg="Доказан опит">Proof of Work</p>
-    <h2 class="sh" data-en="We don't just consult.<br/>We <em>deliver.</em>" data-bg="Ние не само консултираме.<br/>Ние <em>постигаме резултати.</em>">We don't just consult.<br/>We <em>deliver.</em></h2>
+    <p class="stag" data-en="Case Studies" data-bg="Реални проекти">Case Studies</p>
+    <h2 class="sh" data-en="We don&rsquo;t just consult.<br/>We <em>deliver.</em>" data-bg="Ние не само консултираме.<br/>Ние <em>постигаме резултати.</em>">We don&rsquo;t just consult.<br/>We <em>deliver.</em></h2>
     <div class="sdiv"></div>
   </div>
+
+  <!-- Two case study cards -->
   <div class="vent-grid reveal">
+
+    <!-- Card 1: Kaboom -->
     <div class="vent">
       <img src="img/Kaboom.jpeg" alt="Kaboom" loading="lazy" />
-      <div class="vent-body">
+      <div class="vent-body" style="padding-top:2.5rem;">
         <div class="vent-num">01</div>
         <div class="vent-name">Kaboom SoftPlay Park</div>
         <span class="vent-tag" data-en="SoftPlay · Leisure &amp; Entertainment · Ruse" data-bg="СофтПлей · Развлечения · Русе">SoftPlay · Leisure &amp; Entertainment · Ruse</span>
-        <p class="vent-desc" data-en="The project began with the client's capital and location. Kaliora took full operational ownership — concept development, budget planning, complete construction and fit-out management, contractor oversight, permits and regulatory approvals, supplier negotiations, and full operational launch. Kaboom is a concrete demonstration of what it means to trust the right partner." data-bg="Проектът стартира с инвестиционния капитал и локацията на клиента. Kaliora пое пълното оперативно ръководство — разработване на концепцията, изготвяне на бюджет, цялостно управление на строителството и обзавеждането, координация на изпълнителите, получаване на разрешителни, договаряне с доставчици и пълно оперативно стартиране на обекта. Kaboom е конкретното доказателство за това какво означава да се довериш на правилния партньор.">The project began with the client's capital and location. Kaliora took full operational ownership — concept development, budget planning, complete construction and fit-out management, contractor oversight, permits and regulatory approvals, supplier negotiations, and full operational launch. Kaboom is a concrete demonstration of what it means to trust the right partner.</p>
+        <p class="vent-desc" data-en="The project began with the client&rsquo;s capital and location. Kaliora took full operational ownership &mdash; concept development, budget planning, complete construction and fit-out management, contractor oversight, permits and regulatory approvals, supplier negotiations, and full operational launch. Kaboom is a concrete demonstration of what it means to trust the right partner." data-bg="Проектът стартира с инвестиционния капитал и локацията на клиента. Kaliora пое пълното оперативно ръководство &mdash; разработване на концепцията, изготвяне на бюджет, цялостно управление на строителството и обзавеждането, координация на изпълнителите, получаване на разрешителни, договаряне с доставчици и пълно оперативно стартиране на обекта. Kaboom е конкретното доказателство за това какво означава да се довериш на правилния партньор.">The project began with the client&rsquo;s capital and location. Kaliora took full operational ownership &mdash; concept development, budget planning, complete construction and fit-out management, contractor oversight, permits and regulatory approvals, supplier negotiations, and full operational launch. Kaboom is a concrete demonstration of what it means to trust the right partner.</p>
       </div>
     </div>
+
+    <!-- Card 2: Multi-site turnaround -->
     <div class="vent">
-      <img src="img/Management Consulting.jpg" alt="Consulting" loading="lazy" />
-      <div class="vent-body">
+      <img src="img/Management Consulting.jpg" alt="Operations Turnaround" loading="lazy" />
+      <div class="vent-body" style="padding-top:2.5rem;">
         <div class="vent-num">02</div>
-        <div class="vent-name" style="line-height:1.1;" data-en="Management & Consulting" data-bg="Мениджмънт и бизнес консултиране">Management & Consulting</div>
-        <span class="vent-tag" data-en="B2B Advisory · CEE" data-bg="B2B Консултиране · ЦИЕ">B2B Advisory · CEE</span>
-        <p class="vent-desc" data-en="Ongoing consulting relationships with retail, hospitality, and leisure operators across CEE. Each engagement is different — some need an operational audit and a clear action plan; others need someone embedded for months to drive change. We adapt to what the business actually needs." data-bg="Kонсултантски отношения с оператори в търговията, хотелиерството и leisure сектора в ЦИЕ. Всеки ангажимент е различен — едни се нуждаят от оперативен одит и ясен план за действие; други се нуждаят от човек на място за опреден период от време, за да задвижи промяната. Адаптираме се към реалните нужди на всеки бизнес.">Ongoing consulting relationships with retail, hospitality, and leisure operators across CEE. Each engagement is different — some need an operational audit and a clear action plan; others need someone embedded for months to drive change. We adapt to what the business actually needs.</p>
+        <div class="vent-name" data-en="Operations Transformation" data-bg="Оперативна Трансформация">Operations Transformation</div>
+        <span class="vent-tag" data-en="Entertainment &amp; Retail · Numerous Locations · CEE" data-bg="Развлечения и Търговия · Множество Обекти · ЦИЕ">Entertainment &amp; Retail · Numerous Locations · CEE</span>
+        <p class="vent-desc" data-en="A large-scale entertainment and retail operator across Central Europe was facing rising costs, inconsistent performance across sites, and eroding margins. We restructured operations across numerous locations &mdash; redesigning the operating model, standardising KPIs, renegotiating national supplier contracts, and leading a full workforce transformation. Result: 18% reduction in operating costs, 12% EBITDA improvement, and &euro;1.2M in annual savings across a &euro;50M+ portfolio." data-bg="Голям оператор в развлеченията и търговията в Централна Европа се изправи пред нарастващи разходи, непоследователно представяне на обектите и свиващи се маржове. Преструктурирахме операциите в множество обекти &mdash; преработихме оперативния модел, стандартизирахме KPI-та, договорихме национални договори с доставчици и ръководихме цялостна трансформация на екипа. Резултат: 18% намаление на оперативните разходи, 12% подобрение на EBITDA и &euro;1.2М годишни спестявания в портфолио от &euro;50М+.">A large-scale entertainment and retail operator across Central Europe was facing rising costs, inconsistent performance across sites, and eroding margins. We restructured operations across numerous locations &mdash; redesigning the operating model, standardising KPIs, renegotiating national supplier contracts, and leading a full workforce transformation. Result: 18% reduction in operating costs, 12% EBITDA improvement, and &euro;1.2M in annual savings across a &euro;50M+ portfolio.</p>
       </div>
     </div>
-  </div>
+
+  </div><!-- end vent-grid -->
+
+
 </section>
+
 
 <!-- FAQ -->
 <section id="faq">
