@@ -414,7 +414,7 @@
     .fg input:focus,.fg textarea:focus,.fg select:focus { border-color:var(--gold); }
     .fg textarea { resize:vertical; min-height:120px; }
     .fg select option { background:var(--ink-2); }
-    .fsub { display:flex; justify-content:center; margin-top:1.6rem; }
+    .fsub { display:flex; justify-content:center; margin-top:1rem; }
 
     /* SUCCESS MESSAGE */
     .form-success { display:none; text-align:center; padding:3rem 2rem; }
@@ -466,6 +466,154 @@
       .flinks { gap:1rem; }
       .frow { grid-template-columns:1fr; }
     }
+  
+        #team { padding-top:1.8rem; padding-bottom:1.8rem; }
+    /* ─── TEAM: MAGAZINE LAYOUT ─────────────────────────────── */
+    .team-magazine {
+      display:grid;
+      grid-template-columns:280px 1fr;
+      align-items:stretch;
+      border:1px solid var(--border);
+      margin-top:1rem;
+      max-width:1060px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    /* Photo strip — fills full height of content column */
+    .team-mag-photo {
+      position:relative;
+      overflow:hidden;
+    }
+    .team-mag-photo img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center 35%;
+      display:block;
+      filter:grayscale(15%) brightness(0.82);
+    }
+
+    /* Right column — all text */
+    .team-mag-content {
+      display:flex;
+      flex-direction:column;
+      background:var(--ink);
+    }
+
+    /* Founder block */
+    .team-mag-founder {
+      padding:0.7rem 1.2rem;
+      border-bottom:1px solid var(--border);
+    }
+    .team-mag-role {
+      font-size:0.62rem; letter-spacing:0.15em;
+      text-transform:uppercase; color:var(--gold);
+      display:block; margin-bottom:0.25rem;
+    }
+    .team-mag-name {
+      font-family:var(--ff-d); font-size:1.45rem;
+      font-weight:300; color:var(--cream);
+      line-height:1.1; margin-bottom:0.45rem;
+    }
+    .team-mag-divider {
+      width:36px; height:1px; background:var(--gold);
+      opacity:0.5; margin-bottom:0.35rem;
+    }
+    .team-mag-bio {
+      font-size:0.85rem; color:var(--muted);
+      line-height:1.75; margin-bottom:0.6rem;
+    }
+    .team-mag-stats {
+      display:grid; grid-template-columns:repeat(4,1fr);
+      gap:0.55rem; padding-top:0.7rem;
+      border-top:1px solid var(--border);
+    }
+    .team-mag-stat__n {
+      font-family:var(--ff-d); font-size:1.1rem;
+      color:var(--gold); font-weight:300; display:block;
+    }
+    .team-mag-stat__l {
+      font-size:0.59rem; letter-spacing:0.1em;
+      text-transform:uppercase; color:var(--muted);
+      display:block; margin-top:0.15rem;
+    }
+
+    /* Statement block */
+    .team-mag-statement {
+      padding:0.5rem 1.2rem;
+      border-bottom:1px solid var(--border);
+      background:var(--ink-2);
+    }
+    .team-mag-statement__text {
+      font-family:var(--ff-d); font-size:0.82rem;
+      font-weight:300; color:var(--cream); line-height:1.55;
+    }
+    .team-chips {
+      display:flex; gap:0.4rem; flex-wrap:wrap; margin-top:0.5rem;
+    }
+    .team-chip {
+      font-size:0.59rem; letter-spacing:0.12em; text-transform:uppercase;
+      color:var(--gold); border:1px solid var(--border);
+      padding:0.2rem 0.55rem;
+    }
+
+    /* Capability rows */
+    .team-mag-model-label {
+      font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase;
+      color:var(--gold); margin-bottom:0.5rem; display:block;
+    }
+    .team-mag-network-label {
+      padding:0.55rem 1.2rem;
+      border-bottom:1px solid var(--border);
+      background:var(--ink);
+    }
+    .team-mag-network-label span {
+      font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase;
+      color:var(--gold);
+    }
+    .team-mag-caplist {
+      display:flex; flex-direction:column; flex:1;
+      background:var(--ink-2);
+    }
+    .team-mag-caprow {
+      display:grid;
+      grid-template-columns:32px 1fr;
+      gap:0 0.9rem;
+      align-items:start;
+      padding:0.75rem 1.6rem;
+      border-bottom:1px solid var(--border);
+      transition:background 0.22s;
+    }
+    .team-mag-caprow:last-child { border-bottom:none; }
+    .team-mag-caprow:hover { background:var(--ink); }
+    .team-mag-caprow__icon {
+      width:30px; height:30px;
+      border:1px solid var(--border);
+      display:flex; align-items:center; justify-content:center;
+      color:var(--gold); flex-shrink:0; margin-top:2px;
+    }
+    .team-mag-caprow__title {
+      font-family:var(--ff-d); font-size:0.82rem;
+      font-weight:400; color:var(--cream);
+      margin-bottom:0.28rem;
+    }
+    .team-mag-caprow__desc {
+      font-size:0.72rem; color:var(--muted); line-height:1.5;
+    }
+
+    /* Mobile */
+    @media(max-width:900px) {
+      .team-magazine {
+        grid-template-columns:1fr;
+        max-width:100%;
+      }
+      .team-mag-photo { height:220px; }
+      .team-mag-photo img { height:220px; }
+      .team-mag-stats { grid-template-columns:repeat(2,1fr); }
+      .team-mag-caprow { padding:0.7rem 1.2rem; }
+    }
+    /* ─── END TEAM ───────────────────────────────────────────── */
   </style>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>emailjs.init("ESJvva0tzTzoXj3xG");</script>
@@ -809,37 +957,156 @@
 
 <!-- TEAM -->
 <section id="team">
+
   <div class="reveal">
-    <p class="stag" data-en="Our People" data-bg="Нашият Екип">Our People</p>
-    <h2 class="sh" data-en="A team built for <em>every dimension</em> of your growth" data-bg="Екип, изграден за <em>всяко измерение</em> на вашия растеж">A team built for <em>every dimension</em> of your growth</h2>
+    <p class="stag"
+       data-en="Delivery Model"
+       data-bg="Модел на работа">Delivery Model</p>
+    <h2 class="sh"
+        data-en="Personally led. <em>Supported by the right expertise.</em>"
+        data-bg="Лично воден подход. <em>Подкрепен от правилната експертиза.</em>">Personally led. <em>Supported by the right expertise.</em></h2>
     <div class="sdiv"></div>
   </div>
-  <div class="team-grid">
-    <div class="tc reveal">
-      <img src="img/Georgi.jpeg" alt="Operations" loading="lazy" />
-      <div class="tc-body">
-        <span class="tc-role" data-en="Operations, Finance &amp; Strategy" data-bg="Оперативен мениджмънт, финанси и стратегии">Founder · Operations, finance &amp; Strategy</span>
-        <div class="tc-name" data-en="Managing Director" data-bg="Управляващ Директор">Managing Director</div>
-        <p class="tc-desc" data-en="20+ years of leadership experience across Central and Eastern Europe, including board-level roles, managing complex multi-site operations at scale. Extensive experience in full P&L ownership, retail and shopping centre management, and leading large teams (1,000+), with a strong track record in new-site development, operational transformation, and high-value negotiations. Financially driven, with advanced expertise in IRR, EBITDA, NPV, and MOIC, combined with a hands-on execution approach. Aligns operations, commercial strategy, and people performance to drive growth, enhance asset value, and deliver measurable results." data-bg="Над 20 години опит на ръководно ниво в Централна и Източна Европа, с управление на мащабни мулти-сайт операции. Експертиза в цялостната P&L отговорност, ритейл и търговски центрове, както и в изграждането и управлението на големи екипи (1000+ души). Доказан опит в развитието на нови обекти, оптимизацията на операциите и воденето на сложни преговори. Силен финансов профил с практически подход към изпълнението и задълбочени познания в IRR, EBITDA, NPV и MOIC. Свързва операциите, търговската стратегия и хората в един работещ модел, който води до реален растеж, по-добра ефективност и измерими резултати.">20+ years of leadership experience across Central and Eastern Europe, including board-level roles, managing complex multi-site operations at scale. Extensive experience in full P&L ownership, retail and shopping centre management, and leading large teams (1,000+), with a strong track record in new-site development, operational transformation, and high-value negotiations. Financially driven, with advanced expertise in IRR, EBITDA, NPV, and MOIC, combined with a hands-on execution approach. Aligns operations, commercial strategy, and people performance to drive growth, enhance asset value, and deliver measurable results.</p>
-      </div>
+
+  <div class="team-magazine">
+
+    <!-- Photo strip -->
+    <div class="team-mag-photo">
+      <img src="img/Georgi.jpeg"
+           alt="Georgi Kalaydzhiev — Founder &amp; Managing Director"
+           loading="lazy" />
     </div>
-    <div class="tc reveal d1">
-      <img src="img/Radina.jpeg" alt="Marketing" loading="lazy" />
-      <div class="tc-body">
-        <span class="tc-role" data-en="Marketing &amp; Digital Strategy" data-bg="Маркетинг и Дигитална Стратегия">Marketing &amp; Digital Strategy</span>
-        <div class="tc-name" style="margin-top:1.2rem;" data-en="Marketing Director" data-bg="Маркетинг Директор">Marketing Director</div>
-        <p class="tc-desc" data-en="A marketing strategist with a strong academic foundation in Marketing and E-Commerce, complemented by active leadership as Co-founder of the International Marketing Club in Plovdiv. Experienced in shaping brand positioning, analysing consumer behaviour, and driving digital communication strategies, currently leading marketing initiatives in the healthcare space. Known for delivering highly practical training programmes that bridge theory and execution, enabling teams to perform with clarity and confidence." data-bg="Маркетинг стратег със стабилна академична база в маркетинга и електронната търговия, допълнена от активна лидерска роля като съосновател на International Marketing Club в Пловдив. С богат опит в изграждането на бранд позициониране, анализа на потребителското поведение и управлението на дигитални комуникационни стратегии, като в момента ръководи маркетинговите активности в сектора на здравеопазването. Известен с разработването на силно практически ориентирани обучения, които успешно свързват теорията с реалното изпълнение и дават на екипите яснота и увереност в постигането на резултати.">A marketing strategist with a strong academic foundation in Marketing and E-Commerce, complemented by active leadership as Co-founder of the International Marketing Club in Plovdiv. Experienced in shaping brand positioning, analysing consumer behaviour, and driving digital communication strategies, currently leading marketing initiatives in the healthcare space. Known for delivering highly practical training programmes that bridge theory and execution, enabling teams to perform with clarity and confidence.</p>
+
+    <!-- All text content -->
+    <div class="team-mag-content">
+
+      <!-- Founder block -->
+      <div class="team-mag-founder">
+        <span class="team-mag-role"
+              data-en="Founder &amp; Managing Director"
+              data-bg="Основател и Управляващ Директор">Founder &amp; Managing Director</span>
+        <div class="team-mag-name"
+             data-en="Georgi Kalaydzhiev"
+             data-bg="Георги Калайджиев">Georgi Kalaydzhiev</div>
+        <div class="team-mag-divider"></div>
+        <p class="team-mag-bio"
+           data-en="Georgi Kalaydzhiev brings over 20 years of management experience across Central and Eastern Europe, built in high-footfall businesses with large teams and constant operational pressure. His experience spans retail, entertainment, shopping centres, retail park assets and new investment projects. Through Kaliora, he helps owners and investors bring order to complexity, strengthen control and turn strategic decisions into real action."
+           data-bg="Георги Калайджиев има над 20 години управленски опит в Централна и Източна Европа, натрупан в бизнеси с висока посещаемост, големи екипи и постоянен оперативен натиск. Опитът му обхваща търговия, развлечения, търговски центрове, търговски паркове и нови инвестиционни проекти. Чрез Kaliora той помага на собственици и инвеститори да подредят сложността, да засилят контрола и да превърнат стратегическите решения в реални действия.">Georgi Kalaydzhiev brings over 20 years of management experience across Central and Eastern Europe, built in high-footfall businesses with large teams and constant operational pressure. His experience spans retail, entertainment, shopping centres, retail park assets and new investment projects. Through Kaliora, he helps owners and investors bring order to complexity, strengthen control and turn strategic decisions into real action.</p>
+        <div class="team-mag-stats">
+          <div>
+            <span class="team-mag-stat__n">20+</span>
+            <span class="team-mag-stat__l"
+                  data-en="Years of management experience"
+                  data-bg="Години управленски опит">Years of management experience</span>
+          </div>
+          <div>
+            <span class="team-mag-stat__n">&euro;50M+</span>
+            <span class="team-mag-stat__l"
+                  data-en="Annual revenue managed"
+                  data-bg="Управляван годишен оборот">Annual revenue managed</span>
+          </div>
+          <div>
+            <span class="team-mag-stat__n">500+</span>
+            <span class="team-mag-stat__l"
+                  data-en="People led"
+                  data-bg="Ръководени служители">People led</span>
+          </div>
+          <div>
+            <span class="team-mag-stat__n">25+</span>
+            <span class="team-mag-stat__l"
+                  data-en="Sites and commercial assets"
+                  data-bg="Обекти и търговски активи">Sites and commercial assets</span>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="tc reveal d2">
-      <img src="img/Snezana.jpg" alt="Coaching" loading="lazy" />
-      <div class="tc-body">
-        <span class="tc-role" data-en="Coaching &amp; Psychotherapy" data-bg="ЕКИПНА ЕФЕКТИВНОСТ И ПСИХОЛОГИЧЕСКА УСТОЙЧИВОСТ">Coaching &amp; Psychotherapy</span>
-        <div class="tc-name" data-en="Wellbeing &amp; Development Partner" data-bg="Wellbeing Съдружник">Wellbeing &amp; Development Partner</div>
-        <p class="tc-desc" data-en="Combining psychotherapeutic expertise with professional coaching, she supports leaders and teams in building resilience, enhancing wellbeing, and performing under pressure. Delivers targeted interventions through individual coaching, group workshops, and bespoke development programmes — enabling organizations to cultivate healthier, more effective, and high-performing environments." data-bg="Психолог, специализирана в организационната среда и изграждането на устойчиви екипи, с фокус върху превенцията на професионално прегаряне. Работи с компании, в които темпото е високо, натоварването е реално и хората имат нужда от повече от стандартен HR подход. Разработва и провежда социално-психологически тренинги, интерактивни уъркшопи и програми за екипно развитие — с фокус върху комуникацията, управлението на напрежение и изграждането на доверие между хората в динамична работна среда. Подходът ѝ е практически ориентиран: без абстрактна теория, с директна приложимост към реалните предизвикателства на екипа. Резултатът е по-добра функционалност, по-малко вътрешни конфликти и организационна култура, която укрепва екипа.">Combining psychotherapeutic expertise with professional coaching, she supports leaders and teams in building resilience, enhancing wellbeing, and performing under pressure. Delivers targeted interventions through individual coaching, group workshops, and bespoke development programmes — enabling organizations to cultivate healthier, more effective, and high-performing environments.</p>
+
+      <!-- Statement -->
+      <div class="team-mag-statement">
+        <p class="team-mag-model-label"
+           data-en="How Kaliora works"
+           data-bg="Как работи Kaliora">How Kaliora works</p>
+        <p class="team-mag-statement__text"
+           data-en="Each assignment is personally led by Georgi Kalaydzhiev and supported by external expertise when the project requires it — across marketing, finance, organisational development or technical execution."
+           data-bg="Всеки ангажимент се води лично от Георги Калайджиев и се подкрепя от външна експертиза, когато проектът го изисква — в маркетинг, финанси, организационно развитие или техническо изпълнение.">Each assignment is personally led by Georgi Kalaydzhiev and supported by external expertise when the project requires it — across marketing, finance, organisational development or technical execution.</p>
+        <div class="team-chips">
+          <span class="team-chip"
+                data-en="Founder-led"
+                data-bg="Водено от основателя">Founder-led</span>
+          <span class="team-chip"
+                data-en="External expertise"
+                data-bg="Външна експертиза">External expertise</span>
+          <span class="team-chip"
+                data-en="Project-based support"
+                data-bg="Според нуждите на проекта">Project-based support</span>
+        </div>
+      </div>
+
+      <!-- Capability rows -->
+      <div class="team-mag-caplist">
+        <div class="team-mag-network-label">
+          <span data-en="Areas of Support" data-bg="Области на подкрепа">Areas of Support</span>
+        </div>
+
+        <div class="team-mag-caprow">
+          <div class="team-mag-caprow__icon" aria-hidden="true">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/><path stroke-linecap="round" stroke-linejoin="round" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/></svg>
+          </div>
+          <div>
+            <div class="team-mag-caprow__title"
+                 data-en="Marketing &amp; Positioning"
+                 data-bg="Маркетинг и позициониране">Marketing &amp; Positioning</div>
+            <p class="team-mag-caprow__desc"
+               data-en="Consumer behaviour, brand positioning, campaign planning, digital communication and commercial marketing support."
+               data-bg="Потребителско поведение, позициониране на бранда, планиране на кампании, дигитална комуникация и търговска маркетинг подкрепа.">Consumer behaviour, brand positioning, campaign planning, digital communication and commercial marketing support.</p>
+          </div>
+        </div>
+
+        <div class="team-mag-caprow">
+          <div class="team-mag-caprow__icon" aria-hidden="true">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+          </div>
+          <div>
+            <div class="team-mag-caprow__title"
+                 data-en="Financial &amp; Investment Advisory"
+                 data-bg="Финансово и инвестиционно консултиране">Financial &amp; Investment Advisory</div>
+            <p class="team-mag-caprow__desc"
+               data-en="Financial modelling, budgeting, return analysis, scenario planning and support for investment decisions."
+               data-bg="Финансово моделиране, бюджетиране, анализ на възвръщаемостта, сценарийно планиране и подкрепа при инвестиционни решения.">Financial modelling, budgeting, return analysis, scenario planning and support for investment decisions.</p>
+          </div>
+        </div>
+
+        <div class="team-mag-caprow">
+          <div class="team-mag-caprow__icon" aria-hidden="true">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <div>
+            <div class="team-mag-caprow__title"
+                 data-en="Organisational Development &amp; Leadership Support"
+                 data-bg="Организационно развитие и лидерска подкрепа">Organisational Development &amp; Leadership Support</div>
+            <p class="team-mag-caprow__desc"
+               data-en="Team structure, leadership development, organisational resilience, internal communication and management capacity."
+               data-bg="Структура на екипи, лидерско развитие, устойчивост на организацията, вътрешна комуникация и управленски капацитет.">Team structure, leadership development, organisational resilience, internal communication and management capacity.</p>
+          </div>
+        </div>
+
+        <div class="team-mag-caprow">
+          <div class="team-mag-caprow__icon" aria-hidden="true">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <div>
+            <div class="team-mag-caprow__title"
+                 data-en="Technical Operations &amp; Project Delivery"
+                 data-bg="Технически операции и управление на проекти">Technical Operations &amp; Project Delivery</div>
+            <p class="team-mag-caprow__desc"
+               data-en="Supplier coordination, operational readiness, process implementation, reporting systems, site preparation and project execution."
+               data-bg="Координация на доставчици, оперативна подготовка, внедряване на процеси, системи за отчетност, подготовка на обекти и изпълнение на проекти.">Supplier coordination, operational readiness, process implementation, reporting systems, site preparation and project execution.</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
+
 </section>
 
 <!-- AUDIT -->
